@@ -11,8 +11,10 @@ public class Evento {
     private ArrayList<Recurso>recursos;
     private ArrayList<Feedback>feedbacks;
 
+    public Evento() {
+    }
 
-    public void escribirFeedback(String mensaje,Persona autor){
+    public void escribirFeedback(String mensaje, Persona autor){
 
     }
 

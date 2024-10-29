@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestorDeEventos {
+
+
     public static void main(String[] args) {
         ArrayList<Evento>eventos;
 
         public void crearEvento(){
-
-
 
         }
 
@@ -27,4 +27,5 @@ public class GestorDeEventos {
 
         }
 
+    }
     }
