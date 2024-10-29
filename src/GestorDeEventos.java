@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GestorDeEventos {
+        Evento evento;
 
 
     public static void main(String[] args) {
