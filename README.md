@@ -15,3 +15,4 @@
 <h3>Tecnologías Utilizadas</h3>
 <p>Java: Lenguaje de programación principal.</p>
 
+<img>![image](https://github.com/user-attachments/assets/50f8355c-6714-49e8-ba7f-76a47c9f902b)<img>
