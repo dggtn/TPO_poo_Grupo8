@@ -24,7 +24,8 @@ public class GestorDeEventos {
             mostrarEventos();
             var menu = """
                     a - Crear Evento
-                    b - Elegir Evento
+                    b - Elegir y editar Evento
+                    c - 
                     0 - Salir
                     """;
             System.out.println(menu);
@@ -67,6 +68,11 @@ public class GestorDeEventos {
                         1 - Editar Nombre
                         2 - Editar fecha
                         3 - Editar capacidad
+                        4 - Agregar Recursos
+                        5 - Editar Descripcion 
+                        6 - Agregar Integrantes
+                        7 - Mostrar Lista de Integrantes
+                        8 - Eliminar Integrantes
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
@@ -86,9 +92,40 @@ public class GestorDeEventos {
 
                         editarCapacidad(teclado,eventoAEditar);
                         break;
+                    case 4:
+
+                        break;
+                    case 5:
+                        editarDescripcion(teclado,eventoAEditar);
+                        break;
+                    case 6:
+                        agregarIntegrantes(teclado,eventoAEditar);
+                        break;
+                    case 7:
+                        eliminarIntegrantes(teclado,eventoAEditar);
+                        break;
                 }
             }
         }
+    }
+
+    private void editarDescripcion(Scanner teclado,Evento eventoAEditar){
+        System.out.println("Ingresa la nueva descripción");
+        String descripcion = teclado.nextLine();
+        eventoAEditar.setDescripcion(descripcion);
+    }
+    private void agregarIntegrantes(Scanner teclado,Evento eventoAEditar){
+        System.out.println("Ingresa el nombre a agregar");
+        String nombre = teclado.nextLine();
+        eventoAEditar.agregarIntegrante(nombre);
+    }
+    private void mostrarListaIntegrantes(Scanner teclado,Evento eventoAEditar){
+
+    }
+    private void eliminarIntegrantes(Scanner teclado,Evento eventoAEditar){
+        System.out.println("Ingresa el nombre a eliminar");
+        String nombre = teclado.nextLine();
+        eventoAEditar.eliminarIntegrante(nombre);
     }
 
     private void editarNombre(Scanner teclado, Evento eventoAEditar) {
@@ -146,11 +183,13 @@ public class GestorDeEventos {
     public void crearEvento(Scanner teclado) {
         System.out.println("Ingresa nombre del evento:");
         String nombreEvento = teclado.nextLine();
+        System.out.println("Ingresa la descripción del evento:");
+        String descripcionEvento = teclado.nextLine();
         System.out.println("Ingresa capacidad maxima del evento: ");
         int capacidadMaxima = teclado.nextInt();
         System.out.println(" Ingresa fecha del evento:");
         String fechaEvento = teclado.next();
-        Evento evento = new Evento(nombreEvento, capacidadMaxima, fechaEvento);
+        Evento evento = new Evento(nombreEvento,descripcionEvento, capacidadMaxima, fechaEvento);
         eventos.add(evento);
     }
 }

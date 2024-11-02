@@ -12,7 +12,17 @@ public class Evento {
     private ArrayList<Recurso>recursos;
     private ArrayList<Feedback>feedbacks;
 
-    public Evento() {
+
+    public void agregarIntegrante(String nombre){
+        Persona persona = new Persona(nombre);
+        integrantes.add(persona);
+
+    }
+
+    public void eliminarIntegrante(String nombre){
+        Persona persona = new Persona(nombre);
+        integrantes.remove(persona);
+
     }
 
     public String getDescripcion() {
@@ -69,18 +79,14 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public Evento(String nombre, int capacidadMaxima, String fecha) {
+    public Evento(String nombre,String descripcion, int capacidadMaxima, String fecha) {
         this.nombre = nombre;
         this.capacidadMaxima = capacidadMaxima;
         this.fecha = fecha;
-    }
-
-    public Evento(String descripcion, String estado, String fecha, String tipo, int capacidadMaxima) {
         this.descripcion = descripcion;
-        this.estado = estado;
-        this.fecha = fecha;
-        this.tipo = tipo;
-        this.capacidadMaxima = capacidadMaxima;
+        this.integrantes = new ArrayList<>();
+        this.recursos = new ArrayList<>();
+        this.feedbacks = new ArrayList<>();
     }
 
     public void asignarRecursos(String nombre){
