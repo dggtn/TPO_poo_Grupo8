@@ -2,9 +2,10 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Evento {
+    private String nombre;
     private String descripcion;
     private String estado;
-    private Date fecha;
+    private String fecha;
     private String tipo;
     private int capacidadMaxima;
     private ArrayList<Persona>integrantes;
@@ -15,10 +16,26 @@ public class Evento {
     }
 
     public void escribirFeedback(String mensaje, Persona autor){
+        System.out.println("Autor del mensaje:"+autor);
+        System.out.println(mensaje);
 
     }
 
-    public Evento(String descripcion, String estado, Date fecha, String tipo, int capacidadMaxima) {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Evento(String nombre, int capacidadMaxima, String fecha) {
+        this.nombre = nombre;
+        this.capacidadMaxima = capacidadMaxima;
+        this.fecha = fecha;
+    }
+
+    public Evento(String descripcion, String estado, String fecha, String tipo, int capacidadMaxima) {
         this.descripcion = descripcion;
         this.estado = estado;
         this.fecha = fecha;
@@ -27,6 +44,8 @@ public class Evento {
     }
 
     public void asignarRecursos(String nombre){
+        Recurso recurso = new Recurso();
+        recursos.add(recurso);
 
     }
 
