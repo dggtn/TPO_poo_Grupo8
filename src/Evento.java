@@ -11,6 +11,7 @@ public class Evento {
     private List<Persona> integrantes;
     private List<Recurso> recursos;
     private List<Feedback> feedbacks;
+    private Ubicacion ubicacion;
 
 
     public void agregarIntegrante(String nombre) {
@@ -76,7 +77,7 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public Evento(String nombre, String descripcion, int capacidadMaxima, String fecha) {
+    public Evento(String nombre, String descripcion, int capacidadMaxima, String fecha,Ubicacion ubicacion) {
         this.nombre = nombre;
         this.capacidadMaxima = capacidadMaxima;
         this.fecha = fecha;
@@ -84,6 +85,7 @@ public class Evento {
         this.integrantes = new ArrayList<>();
         this.recursos = new ArrayList<>();
         this.feedbacks = new ArrayList<>();
+        this.ubicacion = ubicacion;
     }
 
     public void asignarRecursos(String nombre) {
@@ -108,6 +110,12 @@ public class Evento {
         if(posicion>=0 && posicion<integrantes.size()){
             integrantes.remove(posicion);
         }
+    }
+    public String obtenerDetalleUbicacion(){
+        return this.ubicacion.toString();
+    }
 
+    public Ubicacion getUbicacion() {
+        return ubicacion;
     }
 }

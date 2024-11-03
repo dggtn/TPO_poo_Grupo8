@@ -3,9 +3,16 @@ public class Ubicacion {
     String ciudad;
     int codigoPostal;
     String calle;
-    String entreCalle1;
-    String entreCalle2;
     int numero;
+
+
+    public Ubicacion(String provincia, String ciudad, int codigoPostal, int numero, String calle) {
+        this.provincia = provincia;
+        this.ciudad = ciudad;
+        this.codigoPostal = codigoPostal;
+        this.numero = numero;
+        this.calle = calle;
+    }
 
     public String getProvincia() {
         return provincia;
@@ -39,27 +46,20 @@ public class Ubicacion {
         this.calle = calle;
     }
 
-    public String getEntreCalle1() {
-        return entreCalle1;
-    }
-
-    public void setEntreCalle1(String entreCalle1) {
-        this.entreCalle1 = entreCalle1;
-    }
-
-    public String getEntreCalle2() {
-        return entreCalle2;
-    }
-
-    public void setEntreCalle2(String entreCalle2) {
-        this.entreCalle2 = entreCalle2;
-    }
-
     public int getNumero() {
         return numero;
     }
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    @Override
+    public String toString() {
+        return "Ubicacion:" +
+                "ciudad: '" + ciudad + '\'' +
+                ", provincia: '" + provincia + '\'' +
+                ", calle: '" + calle + '\'' +
+                ", numero: " + numero ;
     }
 }
