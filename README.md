@@ -7,9 +7,10 @@
 <div>
   <ln>
   <li>Crear, editar y eliminar eventos.</li>
-  <li>Listar eventos disponibles.</li>
-  <li>Filtrar eventos por fecha, tipo y ubicación.</li>
-  <li>Registrar participantes para los eventos.</li>
+  <li>Listar eventos pasados y en curso(presentes y futuros).</li>
+  <li>Dar Feedbacks del evento </li>
+  <li>listar feedbacks </li>
+  <li>Registrarintegrantes para los eventos.</li>
   </ln>
 </div>
 <h3>Tecnologías Utilizadas</h3>
