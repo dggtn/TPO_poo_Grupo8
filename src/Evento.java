@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Evento {
     private List<Recurso> recursos;
     private List<Feedback> feedbacks;
     private Ubicacion ubicacion;
+
 
 
     public void agregarRecurso(String nombre) {
@@ -163,5 +165,13 @@ public class Evento {
 
     public boolean tieneFeedbacks() {
         return !this.feedbacks.isEmpty();
+    }
+
+    public boolean yaSucedio() {
+        return fecha.isBefore(LocalDate.now());
+    }
+
+    public boolean estanEnCurso() {
+        return !yaSucedio();
     }
 }

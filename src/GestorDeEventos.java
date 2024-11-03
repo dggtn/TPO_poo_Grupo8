@@ -349,17 +349,42 @@ public class GestorDeEventos {
         if (eventos.isEmpty()) {
             System.out.println("No hay eventos disponibles");
         } else {
-            int numeracion = 1;
-            System.out.println("Eventos: ");
-            for (Evento ev : eventos) {
-                System.out.println(numeracion + ".  " + ev.getNombre() + " (" + ev.getFecha() + ")");
-                numeracion += 1;
-            }
+            mostrarEventosPasados();
+            mostrarEventosEnCurso();
 
         }
 
         System.out.println();
     }
+
+    private void mostrarEventosPasados() {
+        List<Evento> eventosPasados = eventos.stream()
+                .filter(Evento::yaSucedio)
+                .toList();
+
+        int numeracion = 1;
+        System.out.println("Eventos Pasados: ");
+
+        for (Evento ev : eventosPasados) {
+            System.out.println(numeracion + ".  " + ev.getNombre() + " (" + ev.getFecha() + ")");
+            numeracion += 1;
+        }
+    }
+
+    private void mostrarEventosEnCurso() {
+        List<Evento> eventosEnCurso = eventos.stream()
+                .filter(Evento::estanEnCurso)
+                .toList();
+
+        int numeracion = 1;
+        System.out.println("Eventos en curso: ");
+
+        for (Evento ev : eventosEnCurso) {
+            System.out.println(numeracion + ".  " + ev.getNombre() + " (" + ev.getFecha() + ")");
+            numeracion += 1;
+        }
+    }
+
 
 
     public void buscarEvento(Scanner teclado) {
