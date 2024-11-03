@@ -102,7 +102,10 @@ public class GestorDeEventos {
                         agregarIntegrantes(teclado,eventoAEditar);
                         break;
                     case 7:
-                        eliminarIntegrantes(teclado,eventoAEditar);
+                        mostrarIntegrantes(eventoAEditar);
+                        break;
+                    case 8:
+                        eliminarIntegrante(teclado,eventoAEditar);
                         break;
                 }
             }
@@ -119,13 +122,28 @@ public class GestorDeEventos {
         String nombre = teclado.nextLine();
         eventoAEditar.agregarIntegrante(nombre);
     }
-    private void mostrarListaIntegrantes(Scanner teclado,Evento eventoAEditar){
+    public void mostrarIntegrantes(Evento eventoAEditar){
 
+        if (eventoAEditar.tieneIntegrantes()) {
+            int numeracion = 1;
+            System.out.println("Integrantes: ");
+            List<Persona> integrantes = eventoAEditar.getIntegrantes();
+            for (Persona in : integrantes) {
+                System.out.println(numeracion + ".  " + in.getNombre());
+                numeracion += 1;
+            }
+        } else {
+            System.out.println("No hay integrantes en este evento");
+        }
     }
-    private void eliminarIntegrantes(Scanner teclado,Evento eventoAEditar){
-        System.out.println("Ingresa el nombre a eliminar");
-        String nombre = teclado.nextLine();
-        eventoAEditar.eliminarIntegrante(nombre);
+    private void eliminarIntegrante(Scanner teclado,Evento eventoAEditar){
+        System.out.println("Ingresa el numero del integrante a eliminar");
+        int numero = teclado.nextInt();
+        int tamanioLista = eventoAEditar.cantidadIntegrantes();
+        if(numero<=tamanioLista){
+            eventoAEditar.eliminarIntegrante(numero-1);
+        }
+
     }
 
     private void editarNombre(Scanner teclado, Evento eventoAEditar) {

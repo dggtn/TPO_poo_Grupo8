@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.List;
 
 public class Evento {
     private String nombre;
@@ -8,21 +8,18 @@ public class Evento {
     private String fecha;
     private String tipo;
     private int capacidadMaxima;
-    private ArrayList<Persona>integrantes;
-    private ArrayList<Recurso>recursos;
-    private ArrayList<Feedback>feedbacks;
+    private List<Persona> integrantes;
+    private List<Recurso> recursos;
+    private List<Feedback> feedbacks;
 
 
-    public void agregarIntegrante(String nombre){
+    public void agregarIntegrante(String nombre) {
         Persona persona = new Persona(nombre);
         integrantes.add(persona);
-
     }
 
-    public void eliminarIntegrante(String nombre){
+    public void eliminarIntegrante(String nombre) {
         Persona persona = new Persona(nombre);
-        integrantes.remove(persona);
-
     }
 
     public String getDescripcion() {
@@ -65,8 +62,8 @@ public class Evento {
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public void escribirFeedback(String mensaje, Persona autor){
-        System.out.println("Autor del mensaje:"+autor);
+    public void escribirFeedback(String mensaje, Persona autor) {
+        System.out.println("Autor del mensaje:" + autor);
         System.out.println(mensaje);
 
     }
@@ -79,7 +76,7 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public Evento(String nombre,String descripcion, int capacidadMaxima, String fecha) {
+    public Evento(String nombre, String descripcion, int capacidadMaxima, String fecha) {
         this.nombre = nombre;
         this.capacidadMaxima = capacidadMaxima;
         this.fecha = fecha;
@@ -89,27 +86,28 @@ public class Evento {
         this.feedbacks = new ArrayList<>();
     }
 
-    public void asignarRecursos(String nombre){
+    public void asignarRecursos(String nombre) {
         Recurso recurso = new Recurso();
         recursos.add(recurso);
 
     }
 
-    public void mostrarParticipantes(){
-
+    public boolean tieneIntegrantes() {
+        return !this.integrantes.isEmpty();
     }
 
-    public void agregarIntegrante(Persona Integrante){
-
-    }
-    public void borrarParticipantes(Persona Integrante){
-
+    public List<Persona> getIntegrantes() {
+        return  this.integrantes;
     }
 
-    public void mostrarEstadoDelEvento(){
-
+    public int cantidadIntegrantes(){
+        return integrantes.size();
     }
-    public void cancelarEvento(){
+
+    public void eliminarIntegrante(int posicion){
+        if(posicion>=0 && posicion<integrantes.size()){
+            integrantes.remove(posicion);
+        }
 
     }
 }
