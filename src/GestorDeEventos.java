@@ -24,7 +24,8 @@ public class GestorDeEventos {
             var menu = """
                     a - Crear Evento
                     b - Elegir y editar Evento
-                    c - 
+                    c - Dar Feedback
+                    d - Ver feedbacks del Evento
                     0 - Salir
                     """;
             System.out.println(menu);
@@ -41,6 +42,12 @@ public class GestorDeEventos {
                 case 'b':
                     editarEvento(teclado);
                     break;
+               /*/ case 'c':
+                   darFeedback(teclado);
+                    break;/*/
+               /*/ case 'c':
+                    mostrarFeedbacks(teclado);
+                    break;/*/
 
                 case '0':
                     System.out.println("Cerrando la aplicación...");
