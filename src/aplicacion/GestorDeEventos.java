@@ -5,6 +5,7 @@ import modelo.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -46,13 +47,6 @@ public class GestorDeEventos {
                 case 'b':
                     editarEvento(teclado);
                     break;
-               /*/ case 'c':
-                   darFeedback(teclado);
-                    break;/*/
-               /*/ case 'c':
-                    mostrarFeedbacks(teclado);
-                    break;/*/
-
                 case '0':
                     System.out.println("Cerrando la aplicación...");
                     break;
@@ -416,7 +410,7 @@ public class GestorDeEventos {
         System.out.println("Ingresa la descripción del evento:");
         String descripcionEvento = teclado.nextLine();
         System.out.println("Ingresa capacidad maxima del evento: ");
-        int capacidadMaxima = teclado.nextInt();
+        int capacidadMaxima = this.leerNumeroEntero(teclado, "La capacidad maxima deber ser un numero mayor a 0");
         System.out.println(" Ingresa fecha del evento (dd/MM/yyyy): ");
         String fechaEvento = teclado.next();
         LocalDate fecha= LocalDate.parse(fechaEvento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -436,6 +430,21 @@ public class GestorDeEventos {
         Ubicacion ubicacion = new Ubicacion(provincia, ciudad, codigoPostal, numero, calle);
         Evento evento = new Evento(nombreEvento, descripcionEvento, capacidadMaxima, fecha, ubicacion);
         eventos.add(evento);
+    }
+
+    private int leerNumeroEntero(Scanner teclado, String mensajeDeError) {
+        int valor = 0;
+        boolean seguirPidiendo = true;
+        while (seguirPidiendo) {
+            try {
+                valor = teclado.nextInt();
+                seguirPidiendo = false;
+            } catch(InputMismatchException e){
+                teclado.nextLine();
+                System.out.println(mensajeDeError);
+            }
+        }
+        return valor;
     }
 
     public void editarUbicacion(Scanner teclado, Evento eventoAEditar) {
