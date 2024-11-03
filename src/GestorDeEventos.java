@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -333,7 +335,7 @@ public class GestorDeEventos {
     private void editarFecha(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa la nueva fecha");
         String fecha = teclado.nextLine();
-        eventoAEditar.setFecha(fecha);
+        eventoAEditar.setFecha(LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     private void editarCapacidad(Scanner teclado, Evento eventoAEditar) {
@@ -386,8 +388,9 @@ public class GestorDeEventos {
         String descripcionEvento = teclado.nextLine();
         System.out.println("Ingresa capacidad maxima del evento: ");
         int capacidadMaxima = teclado.nextInt();
-        System.out.println(" Ingresa fecha del evento:");
+        System.out.println(" Ingresa fecha del evento (dd/MM/yyyy): ");
         String fechaEvento = teclado.next();
+        LocalDate fecha= LocalDate.parse(fechaEvento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         teclado.nextLine(); //para ignorar el enter
         System.out.println(" Ingresa ubicación del evento:");
         System.out.println("Ingresa provincia:");
@@ -402,7 +405,7 @@ public class GestorDeEventos {
         String calle = teclado.next();
 
         Ubicacion ubicacion = new Ubicacion(provincia, ciudad, codigoPostal, numero, calle);
-        Evento evento = new Evento(nombreEvento, descripcionEvento, capacidadMaxima, fechaEvento, ubicacion);
+        Evento evento = new Evento(nombreEvento, descripcionEvento, capacidadMaxima, fecha, ubicacion);
         eventos.add(evento);
     }
 

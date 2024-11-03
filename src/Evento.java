@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -5,7 +6,7 @@ public class Evento {
     private String nombre;
     private String descripcion;
     private String estado;
-    private String fecha;
+    private LocalDate fecha;
     private String tipo;
     private int capacidadMaxima;
     private List<Persona> integrantes;
@@ -37,11 +38,11 @@ public class Evento {
         this.descripcion = descripcion;
     }
 
-    public String getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -83,7 +84,7 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public Evento(String nombre, String descripcion, int capacidadMaxima, String fecha, Ubicacion ubicacion) {
+    public Evento(String nombre, String descripcion, int capacidadMaxima, LocalDate fecha, Ubicacion ubicacion) {
         this.nombre = nombre;
         this.capacidadMaxima = capacidadMaxima;
         this.fecha = fecha;
