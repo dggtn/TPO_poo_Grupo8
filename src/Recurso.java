@@ -8,4 +8,8 @@ public class Recurso {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    public Recurso(String nombre) {
+        this.nombre = nombre;
+    }
 }

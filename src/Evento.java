@@ -14,6 +14,12 @@ public class Evento {
     private Ubicacion ubicacion;
 
 
+    public void agregarRecurso(String nombre) {
+        Recurso recurso = new Recurso(nombre);
+        recursos.add(recurso);
+    }
+
+
     public void agregarIntegrante(String nombre) {
         Persona persona = new Persona(nombre);
         integrantes.add(persona);
@@ -77,7 +83,7 @@ public class Evento {
         this.nombre = nombre;
     }
 
-    public Evento(String nombre, String descripcion, int capacidadMaxima, String fecha,Ubicacion ubicacion) {
+    public Evento(String nombre, String descripcion, int capacidadMaxima, String fecha, Ubicacion ubicacion) {
         this.nombre = nombre;
         this.capacidadMaxima = capacidadMaxima;
         this.fecha = fecha;
@@ -89,33 +95,60 @@ public class Evento {
     }
 
     public void asignarRecursos(String nombre) {
-        Recurso recurso = new Recurso();
+        Recurso recurso = new Recurso(nombre);
         recursos.add(recurso);
 
     }
+
+    public boolean tieneRecursos() {
+        return !this.recursos.isEmpty();
+    }
+
 
     public boolean tieneIntegrantes() {
         return !this.integrantes.isEmpty();
     }
 
     public List<Persona> getIntegrantes() {
-        return  this.integrantes;
+        return this.integrantes;
     }
 
-    public int cantidadIntegrantes(){
+    public int cantidadIntegrantes() {
         return integrantes.size();
     }
 
-    public void eliminarIntegrante(int posicion){
-        if(posicion>=0 && posicion<integrantes.size()){
+    public void eliminarIntegrante(int posicion) {
+        if (posicion >= 0 && posicion < integrantes.size()) {
             integrantes.remove(posicion);
         }
     }
-    public String obtenerDetalleUbicacion(){
+
+    public String obtenerDetalleUbicacion() {
         return this.ubicacion.toString();
     }
 
     public Ubicacion getUbicacion() {
         return ubicacion;
+    }
+
+    public List<Recurso> getRecursos() {
+        return this.recursos;
+    }
+
+    public int cantidadRecursos() {
+        return recursos.size();
+    }
+
+    public void eliminarRecurso(int posicion) {
+        if (posicion >= 0 && posicion < recursos.size()) {
+            recursos.remove(posicion);
+        }
+    }
+
+    public Recurso obtenerRecurso(int posicion) {
+        if (posicion >= 0 && posicion < recursos.size()) {
+            return recursos.get(posicion);
+        }
+        return null;
     }
 }

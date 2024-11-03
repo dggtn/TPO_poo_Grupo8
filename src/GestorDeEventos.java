@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -75,7 +74,7 @@ public class GestorDeEventos {
                         6 - Agregar Integrantes
                         7 - Mostrar Lista de Integrantes
                         8 - Eliminar Integrantes
-                        9 - Agregar Recursos
+                        9 - Administrar Recursos
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
@@ -110,9 +109,84 @@ public class GestorDeEventos {
                     case 8:
                         eliminarIntegrante(teclado, eventoAEditar);
                         break;
+                    case 9:
+                        administrarRecursos(teclado, eventoAEditar);
+                        break;
                 }
             }
         }
+    }
+
+    private void administrarRecursos(Scanner teclado, Evento eventoAEditar) {
+        int opcion = -1;
+        while (opcion != 0) {
+            mostrarRecursos(eventoAEditar);
+            var menu = """
+                    1 - Agregar
+                    2 - Eliminar
+                    3 - Editar
+                    0 - Volver al menu anterior
+                    """;
+            System.out.println(menu);
+            opcion = teclado.nextInt();
+            teclado.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    agregarRecurso(teclado, eventoAEditar);
+                    break;
+                case 2:
+                    eliminarRecurso(teclado, eventoAEditar);
+                    break;
+                case 3:
+
+                    editarRecursoExistente(teclado, eventoAEditar);
+                    break;
+            }
+        }
+    }
+
+    public void mostrarRecursos(Evento eventoAEditar) {
+        if (eventoAEditar.tieneRecursos()) {
+            int numeracion = 1;
+            System.out.println("Recursos: ");
+            List<Recurso> recursos = eventoAEditar.getRecursos();
+            for (Recurso in : recursos) {
+                System.out.println(numeracion + ".  " + in.getNombre());
+                numeracion += 1;
+            }
+        } else {
+            System.out.println("No hay recursos asignados en este evento");
+        }
+    }
+
+    private void editarRecursoExistente(Scanner teclado, Evento eventoAEditar) {
+        System.out.println("Ingresa el numero del recurso editar");
+        int numero = teclado.nextInt();
+        teclado.nextLine();
+        int tamanioLista = eventoAEditar.cantidadRecursos();
+        if (numero <= tamanioLista) {
+            Recurso recurso = eventoAEditar.obtenerRecurso(numero - 1);
+            System.out.println("Ingrese el nuevo nombre del recurso: ");
+            String nombre = teclado.nextLine();
+            recurso.setNombre(nombre);
+        }
+    }
+
+    private void eliminarRecurso(Scanner teclado, Evento eventoAEditar) {
+        System.out.println("Ingresa el numero del recurso a eliminar");
+        int numero = teclado.nextInt();
+        int tamanioLista = eventoAEditar.cantidadRecursos();
+        if (numero <= tamanioLista) {
+            eventoAEditar.eliminarRecurso(numero - 1);
+        }
+
+    }
+
+    private void agregarRecurso(Scanner teclado, Evento eventoAEditar) {
+        System.out.println("Ingresa recurso a agregar :");
+        String recurso = teclado.nextLine();
+        eventoAEditar.agregarRecurso(recurso);
     }
 
     private void editarDescripcion(Scanner teclado, Evento eventoAEditar) {
@@ -309,7 +383,6 @@ public class GestorDeEventos {
     }
 
 }
-
 
 
 
