@@ -452,8 +452,6 @@ public class GestorDeEventos {
         return valor;
     }
 
-
-
     public void editarUbicacion(Scanner teclado, Evento eventoAEditar) {
         int opcion = -1;
         while (opcion != 0) {
