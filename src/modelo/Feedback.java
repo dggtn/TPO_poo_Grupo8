@@ -1,3 +1,5 @@
+package modelo;
+
 public class Feedback {
     private String mensaje;
     private String autor;

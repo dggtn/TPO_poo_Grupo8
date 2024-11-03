@@ -1,3 +1,5 @@
+import modelo.*;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -134,7 +136,7 @@ public class GestorDeEventos {
                 System.out.println("Feedbacks: ");
                 List<Feedback> feedbacks = eventoAEditar.getFeedbacks();
                 for (Feedback fe : feedbacks) {
-                    System.out.println(numeracion + ".Feedback:  " + fe.getMensaje() + "Autor:  " + fe.getAutor());
+                    System.out.println(numeracion + ".modelo.Feedback:  " + fe.getMensaje() + "Autor:  " + fe.getAutor());
                     numeracion += 1;
                 }
             } else {

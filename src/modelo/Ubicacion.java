@@ -1,3 +1,5 @@
+package modelo;
+
 public class Ubicacion {
     String provincia;
     String ciudad;
@@ -56,7 +58,7 @@ public class Ubicacion {
 
     @Override
     public String toString() {
-        return "Ubicacion:" +
+        return "modelo.Ubicacion:" +
                 "ciudad: '" + ciudad + '\'' +
                 ", provincia: '" + provincia + '\'' +
                 ", calle: '" + calle + '\'' +

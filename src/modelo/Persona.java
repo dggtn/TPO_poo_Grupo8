@@ -1,4 +1,6 @@
-public class Recurso {
+package modelo;
+
+public class Persona {
     String nombre;
 
     public String getNombre() {
@@ -9,7 +11,7 @@ public class Recurso {
         this.nombre = nombre;
     }
 
-    public Recurso(String nombre) {
+    public Persona(String nombre) {
         this.nombre = nombre;
     }
 }
