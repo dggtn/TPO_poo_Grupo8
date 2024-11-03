@@ -65,16 +65,15 @@ public class GestorDeEventos {
                 System.out.println("Capacidad maxima: " + eventoAEditar.getCapacidadMaxima());
                 System.out.println("Fecha:  " + eventoAEditar.getFecha());
                 System.out.println(eventoAEditar.obtenerDetalleUbicacion());
+                System.out.println(); //espacio entre el listado y el menu
                 var menu = """
                         1 - Editar Nombre
                         2 - Editar fecha
                         3 - Editar capacidad
                         4 - Editar Ubicación
-                        5 - Editar Descripcion 
-                        6 - Agregar Integrantes
-                        7 - Mostrar Lista de Integrantes
-                        8 - Eliminar Integrantes
-                        9 - Administrar Recursos
+                        5 - Editar Descripcion
+                        6 - Administrar Integrantes
+                        7 - Administrar Recursos
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
@@ -101,26 +100,61 @@ public class GestorDeEventos {
                         editarDescripcion(teclado, eventoAEditar);
                         break;
                     case 6:
-                        agregarIntegrantes(teclado, eventoAEditar);
+                        administrarIntegrantes(teclado, eventoAEditar);
                         break;
                     case 7:
-                        mostrarIntegrantes(eventoAEditar);
-                        break;
-                    case 8:
-                        eliminarIntegrante(teclado, eventoAEditar);
-                        break;
-                    case 9:
                         administrarRecursos(teclado, eventoAEditar);
                         break;
                 }
             }
         }
     }
+    private void administrarIntegrantes(Scanner teclado, Evento eventoAEditar) {
+        int opcion = -1;
+        while (opcion != 0) {
+            mostrarIntegrantes(eventoAEditar);
+            System.out.println(); //espacio entre el listado y el menu
+            var menu = """
+                    1 - Agregar
+                    2 - Eliminar
+                    3 - Editar
+                    0 - Volver al menu anterior
+                    """;
+            System.out.println(menu);
+            opcion = teclado.nextInt();
+            teclado.nextLine();
 
+            switch (opcion) {
+                case 1:
+                    agregarIntegrante(teclado, eventoAEditar);
+                    break;
+                case 2:
+                    eliminarIntegrante(teclado, eventoAEditar);
+                    break;
+                case 3:
+
+                   editarIntegranteExistente(teclado, eventoAEditar);
+                    break;
+            }
+        }
+    }
+    private void editarIntegranteExistente(Scanner teclado, Evento eventoAEditar) {
+        System.out.println("Ingresa el numero del integrante a editar");
+        int numero = teclado.nextInt();
+        teclado.nextLine();
+        int tamanioLista = eventoAEditar.cantidadIntegrantes();
+        if (numero <= tamanioLista) {
+            Persona integrante = eventoAEditar.obtenerIntegrante(numero - 1);
+            System.out.println("Ingrese el nuevo nombre del integrante: ");
+            String nombre = teclado.nextLine();
+            integrante.setNombre(nombre);
+        }
+    }
     private void administrarRecursos(Scanner teclado, Evento eventoAEditar) {
         int opcion = -1;
         while (opcion != 0) {
             mostrarRecursos(eventoAEditar);
+            System.out.println(); //espacio entre el listado y el menu
             var menu = """
                     1 - Agregar
                     2 - Eliminar
@@ -195,7 +229,7 @@ public class GestorDeEventos {
         eventoAEditar.setDescripcion(descripcion);
     }
 
-    private void agregarIntegrantes(Scanner teclado, Evento eventoAEditar) {
+    private void agregarIntegrante(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa el nombre a agregar");
         String nombre = teclado.nextLine();
         eventoAEditar.agregarIntegrante(nombre);
@@ -317,6 +351,7 @@ public class GestorDeEventos {
             System.out.println("Codigo:  " + eventoAEditar.getUbicacion().getCodigoPostal());
             System.out.println("Numero:  " + eventoAEditar.getUbicacion().getNumero());
             System.out.println("Calle:  " + eventoAEditar.getUbicacion().getCalle());
+            System.out.println(); //espacio entre el listado y el menu
             var menu = """
                     1 - Editar provincia
                     2 - Editar ciudad

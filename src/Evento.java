@@ -151,4 +151,11 @@ public class Evento {
         }
         return null;
     }
+    public Persona obtenerIntegrante(int posicion) {
+        if (posicion >= 0 && posicion < integrantes.size()) {
+            return integrantes.get(posicion);
+        }
+        return null;
+    }
+
 }
