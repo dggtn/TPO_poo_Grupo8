@@ -407,23 +407,28 @@ public class GestorDeEventos {
     public void crearEvento(Scanner teclado) {
         System.out.println("Ingresa nombre del evento:");
         String nombreEvento = teclado.nextLine();
+
         System.out.println("Ingresa la descripción del evento:");
         String descripcionEvento = teclado.nextLine();
+
         System.out.println("Ingresa capacidad maxima del evento: ");
         int capacidadMaxima = this.leerNumeroEntero(teclado, "La capacidad maxima deber ser un numero mayor a 0");
+
         System.out.println(" Ingresa fecha del evento (dd/MM/yyyy): ");
         String fechaEvento = teclado.next();
+
         LocalDate fecha= LocalDate.parse(fechaEvento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         teclado.nextLine(); //para ignorar el enter
+
         System.out.println(" Ingresa ubicación del evento:");
         System.out.println("Ingresa provincia:");
         String provincia = teclado.nextLine();
         System.out.println("Ingresa ciudad:");
         String ciudad = teclado.nextLine();
         System.out.println("Ingresa codigo postal: ");
-        int codigoPostal = teclado.nextInt();
+        int codigoPostal = this.leerNumeroEntero(teclado,"El codigo postal debe ser un numero entero");
         System.out.println(" Ingresa numero de domicilio:");
-        int numero = teclado.nextInt();
+        int numero = this.leerNumeroEntero(teclado,"El numero de domicilio debe ser un numero entero");
         System.out.println(" Ingresa calle:");
         String calle = teclado.next();
 
@@ -446,6 +451,8 @@ public class GestorDeEventos {
         }
         return valor;
     }
+
+
 
     public void editarUbicacion(Scanner teclado, Evento eventoAEditar) {
         int opcion = -1;
@@ -510,13 +517,13 @@ public class GestorDeEventos {
 
     private void editarCodigo(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo codigo:");
-        int codigo = teclado.nextInt();
+        int codigo = this.leerNumeroEntero(teclado,"El codigo postal debe ser un numero entero");
         eventoAEditar.getUbicacion().setCodigoPostal(codigo);
     }
 
     private void editarNumero(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo numero:");
-        int numero = teclado.nextInt();
+        int numero = this.leerNumeroEntero(teclado,"El numero de domicilio debe ser un numero entero");
         eventoAEditar.getUbicacion().setNumero(numero);
     }
 
