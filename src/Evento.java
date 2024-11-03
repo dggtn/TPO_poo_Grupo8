@@ -94,11 +94,6 @@ public class Evento {
         this.ubicacion = ubicacion;
     }
 
-    public void asignarRecursos(String nombre) {
-        Recurso recurso = new Recurso(nombre);
-        recursos.add(recurso);
-
-    }
 
     public boolean tieneRecursos() {
         return !this.recursos.isEmpty();
@@ -135,6 +130,9 @@ public class Evento {
         return this.recursos;
     }
 
+    public List<Feedback> getFeedbacks() {
+        return this.feedbacks;
+    }
     public int cantidadRecursos() {
         return recursos.size();
     }
@@ -157,5 +155,12 @@ public class Evento {
         }
         return null;
     }
+    public void darFeedback(String mensaje,String autor){
+        Feedback feedback = new Feedback(mensaje,autor);
+        feedbacks.add(feedback);
+    }
 
+    public boolean tieneFeedbacks() {
+        return !this.feedbacks.isEmpty();
+    }
 }

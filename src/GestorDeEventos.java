@@ -23,9 +23,7 @@ public class GestorDeEventos {
             mostrarEventos();
             var menu = """
                     a - Crear Evento
-                    b - Elegir y editar Evento
-                    c - Dar Feedback
-                    d - Ver feedbacks del Evento
+                    b - Elegir y administrar evento
                     0 - Salir
                     """;
             System.out.println(menu);
@@ -81,6 +79,7 @@ public class GestorDeEventos {
                         5 - Editar Descripcion
                         6 - Administrar Integrantes
                         7 - Administrar Recursos
+                        8 - Ver feedbacks del evento
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
@@ -112,10 +111,58 @@ public class GestorDeEventos {
                     case 7:
                         administrarRecursos(teclado, eventoAEditar);
                         break;
+                    case 8:
+                        mostrarFeedbacks(eventoAEditar,teclado);
+                        break;
+                    case 0 :
+                        System.out.println("Volviendo al menu principal");
+                    default:
+                        System.out.println("Opción inválida");
+
                 }
             }
         }
     }
+
+    public void mostrarFeedbacks(Evento eventoAEditar, Scanner teclado) {
+        int opcion = -1;
+        while (opcion != 0) {
+            if (eventoAEditar.tieneFeedbacks()) {
+                int numeracion = 1;
+                System.out.println("Feedbacks: ");
+                List<Feedback> feedbacks = eventoAEditar.getFeedbacks();
+                for (Feedback fe : feedbacks) {
+                    System.out.println(numeracion + ".Feedback:  " + fe.getMensaje() + "Autor:  " + fe.getAutor());
+                    numeracion += 1;
+                }
+            } else {
+                System.out.println("Todavia no hay feedbacks para  este evento");
+            }
+            var menu = """
+                    1 - Da tu feedback sobre el evento 
+                    0 - Volver a menu principal
+                    """;
+            System.out.println(menu);
+            opcion = teclado.nextInt();
+            teclado.nextLine();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("Escribe el feedback:");
+                    String mensaje = teclado.nextLine();
+                    System.out.println("Escribe tu nombre:");
+                    String autor = teclado.nextLine();
+                    eventoAEditar.darFeedback(mensaje, autor);
+                    break;
+                case 0 :
+                    System.out.println("Volviendo al menu principal");
+                default:
+                    System.out.println("Opción inválida");
+
+            }
+        }
+    }
+
     private void administrarIntegrantes(Scanner teclado, Evento eventoAEditar) {
         int opcion = -1;
         while (opcion != 0) {
@@ -140,11 +187,16 @@ public class GestorDeEventos {
                     break;
                 case 3:
 
-                   editarIntegranteExistente(teclado, eventoAEditar);
+                    editarIntegranteExistente(teclado, eventoAEditar);
                     break;
+                case 0 :
+                    System.out.println("Volviendo al menu principal");
+                default:
+                    System.out.println("Opción inválida");
             }
         }
     }
+
     private void editarIntegranteExistente(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa el numero del integrante a editar");
         int numero = teclado.nextInt();
@@ -157,6 +209,7 @@ public class GestorDeEventos {
             integrante.setNombre(nombre);
         }
     }
+
     private void administrarRecursos(Scanner teclado, Evento eventoAEditar) {
         int opcion = -1;
         while (opcion != 0) {
@@ -183,6 +236,10 @@ public class GestorDeEventos {
 
                     editarRecursoExistente(teclado, eventoAEditar);
                     break;
+                case 0 :
+                    System.out.println("Volviendo al menu principal");
+                default:
+                    System.out.println("Opción inválida");
             }
         }
     }
@@ -390,6 +447,10 @@ public class GestorDeEventos {
                 case 5:
                     editarCalle(teclado, eventoAEditar);
                     break;
+                case 0 :
+                    System.out.println("Volviendo al menu principal");
+                default:
+                    System.out.println("Opción inválida");
             }
         }
     }
