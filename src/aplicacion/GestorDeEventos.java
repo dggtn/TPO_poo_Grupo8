@@ -1,13 +1,13 @@
 package aplicacion;
 
 import modelo.*;
+import pantallas.PantallaAdministrarIntegrantes;
 import pantallas.PantallaCrearEvento;
 import pantallas.PantallaEditarUbicacion;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,10 +15,13 @@ public class GestorDeEventos {
     private List<Evento> eventos;
     private PantallaCrearEvento pantallaCrearEvento;
     private PantallaEditarUbicacion pantallaEditarUbicacion;
+    private PantallaAdministrarIntegrantes pantallaAdministrarIntegrantes;
+
     public GestorDeEventos() {
         this.eventos = new ArrayList<>();
         this.pantallaCrearEvento = new PantallaCrearEvento(new Scanner(System.in));
-        this.pantallaEditarUbicacion= new PantallaEditarUbicacion(new Scanner(System.in));
+        this.pantallaEditarUbicacion = new PantallaEditarUbicacion(new Scanner(System.in));
+        this.pantallaAdministrarIntegrantes = new PantallaAdministrarIntegrantes(new Scanner(System.in));
     }
 
     public static void main(String[] args) {
@@ -106,21 +109,21 @@ public class GestorDeEventos {
                         editarCapacidad(teclado, eventoAEditar);
                         break;
                     case 4:
-                       this.pantallaEditarUbicacion.editarUbicacion(eventoAEditar);
+                        this.pantallaEditarUbicacion.editarUbicacion(eventoAEditar);
                         break;
                     case 5:
                         editarDescripcion(teclado, eventoAEditar);
                         break;
                     case 6:
-                        administrarIntegrantes(teclado, eventoAEditar);
+                        this.pantallaAdministrarIntegrantes.iniciar(eventoAEditar);
                         break;
                     case 7:
                         administrarRecursos(teclado, eventoAEditar);
                         break;
                     case 8:
-                        mostrarFeedbacks(eventoAEditar,teclado);
+                        mostrarFeedbacks(eventoAEditar, teclado);
                         break;
-                    case 0 :
+                    case 0:
                         System.out.println("Volviendo al menu principal");
                     default:
                         System.out.println("Opción inválida");
@@ -160,59 +163,12 @@ public class GestorDeEventos {
                     String autor = teclado.nextLine();
                     eventoAEditar.darFeedback(mensaje, autor);
                     break;
-                case 0 :
+                case 0:
                     System.out.println("Volviendo al menu principal");
                 default:
                     System.out.println("Opción inválida");
 
             }
-        }
-    }
-
-    private void administrarIntegrantes(Scanner teclado, Evento eventoAEditar) {
-        int opcion = -1;
-        while (opcion != 0) {
-            mostrarIntegrantes(eventoAEditar);
-            System.out.println(); //espacio entre el listado y el menu
-            var menu = """
-                    1 - Agregar
-                    2 - Eliminar
-                    3 - Editar
-                    0 - Volver al menu anterior
-                    """;
-            System.out.println(menu);
-            opcion = teclado.nextInt();
-            teclado.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    agregarIntegrante(teclado, eventoAEditar);
-                    break;
-                case 2:
-                    eliminarIntegrante(teclado, eventoAEditar);
-                    break;
-                case 3:
-
-                    editarIntegranteExistente(teclado, eventoAEditar);
-                    break;
-                case 0 :
-                    System.out.println("Volviendo al menu principal");
-                default:
-                    System.out.println("Opción inválida");
-            }
-        }
-    }
-
-    private void editarIntegranteExistente(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del integrante a editar");
-        int numero = teclado.nextInt();
-        teclado.nextLine();
-        int tamanioLista = eventoAEditar.cantidadIntegrantes();
-        if (numero <= tamanioLista) {
-            Persona integrante = eventoAEditar.obtenerIntegrante(numero - 1);
-            System.out.println("Ingrese el nuevo nombre del integrante: ");
-            String nombre = teclado.nextLine();
-            integrante.setNombre(nombre);
         }
     }
 
@@ -242,7 +198,7 @@ public class GestorDeEventos {
 
                     editarRecursoExistente(teclado, eventoAEditar);
                     break;
-                case 0 :
+                case 0:
                     System.out.println("Volviendo al menu principal");
                 default:
                     System.out.println("Opción inválida");
@@ -299,37 +255,6 @@ public class GestorDeEventos {
         eventoAEditar.setDescripcion(descripcion);
     }
 
-    private void agregarIntegrante(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa el nombre a agregar");
-        String nombre = teclado.nextLine();
-        eventoAEditar.agregarIntegrante(nombre);
-    }
-
-    public void mostrarIntegrantes(Evento eventoAEditar) {
-
-        if (eventoAEditar.tieneIntegrantes()) {
-            int numeracion = 1;
-            System.out.println("Integrantes: ");
-            List<Persona> integrantes = eventoAEditar.getIntegrantes();
-            for (Persona in : integrantes) {
-                System.out.println(numeracion + ".  " + in.getNombre());
-                numeracion += 1;
-            }
-        } else {
-            System.out.println("No hay integrantes en este evento");
-        }
-    }
-
-    private void eliminarIntegrante(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del integrante a eliminar");
-        int numero = teclado.nextInt();
-        int tamanioLista = eventoAEditar.cantidadIntegrantes();
-        if (numero <= tamanioLista) {
-            eventoAEditar.eliminarIntegrante(numero - 1);
-        }
-
-    }
-
     private void editarNombre(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo nombre");
         String nombre = teclado.nextLine();
@@ -362,9 +287,7 @@ public class GestorDeEventos {
     }
 
     private void mostrarEventosPasados() {
-        List<Evento> eventosPasados = eventos.stream()
-                .filter(Evento::yaSucedio)
-                .toList();
+        List<Evento> eventosPasados = eventos.stream().filter(Evento::yaSucedio).toList();
 
         int numeracion = 1;
         System.out.println("Eventos Pasados: ");
@@ -376,9 +299,7 @@ public class GestorDeEventos {
     }
 
     private void mostrarEventosEnCurso() {
-        List<Evento> eventosEnCurso = eventos.stream()
-                .filter(Evento::estanEnCurso)
-                .toList();
+        List<Evento> eventosEnCurso = eventos.stream().filter(Evento::estanEnCurso).toList();
 
         int numeracion = 1;
         System.out.println("Eventos en curso: ");
@@ -388,7 +309,6 @@ public class GestorDeEventos {
             numeracion += 1;
         }
     }
-
 
 
     public void buscarEvento(Scanner teclado) {
@@ -408,21 +328,6 @@ public class GestorDeEventos {
             }
 
         }
-    }
-
-    private int leerNumeroEntero(Scanner teclado, String mensajeDeError) {
-        int valor = 0;
-        boolean seguirPidiendo = true;
-        while (seguirPidiendo) {
-            try {
-                valor = teclado.nextInt();
-                seguirPidiendo = false;
-            } catch(InputMismatchException e){
-                teclado.nextLine();
-                System.out.println(mensajeDeError);
-            }
-        }
-        return valor;
     }
 }
 
