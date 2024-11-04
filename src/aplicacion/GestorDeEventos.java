@@ -192,26 +192,6 @@ public class GestorDeEventos {
             numeracion += 1;
         }
     }
-
-
-   /*/ public void buscarEvento(Scanner teclado) {
-        List<Evento> eventosEncontrados = new ArrayList<>();
-        System.out.println("Ingresa nombre del evento:");
-        String nombreEvento = teclado.next();
-        for (Evento evento : eventos) {
-            if (evento.getNombre().contains(nombreEvento)) {
-                eventosEncontrados.add(evento);
-            }
-            if (eventosEncontrados.isEmpty()) {
-                System.out.println("No hay eventos disponibles");
-            } else {
-                for (Evento ev : eventosEncontrados) {
-                    System.out.println(ev.getNombre());
-                }
-            }
-
-        }
-    }/*/
 }
 
 
