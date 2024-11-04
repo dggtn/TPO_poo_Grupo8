@@ -2,6 +2,7 @@ package aplicacion;
 
 import modelo.*;
 import pantallas.PantallaAdministrarIntegrantes;
+import pantallas.PantallaAdministrarRecursos;
 import pantallas.PantallaCrearEvento;
 import pantallas.PantallaEditarUbicacion;
 
@@ -16,12 +17,14 @@ public class GestorDeEventos {
     private PantallaCrearEvento pantallaCrearEvento;
     private PantallaEditarUbicacion pantallaEditarUbicacion;
     private PantallaAdministrarIntegrantes pantallaAdministrarIntegrantes;
+    private PantallaAdministrarRecursos pantallaAdministrarRecursos;
 
     public GestorDeEventos() {
         this.eventos = new ArrayList<>();
         this.pantallaCrearEvento = new PantallaCrearEvento(new Scanner(System.in));
         this.pantallaEditarUbicacion = new PantallaEditarUbicacion(new Scanner(System.in));
         this.pantallaAdministrarIntegrantes = new PantallaAdministrarIntegrantes(new Scanner(System.in));
+        this.pantallaAdministrarRecursos = new PantallaAdministrarRecursos(new Scanner(System.in));
     }
 
     public static void main(String[] args) {
@@ -118,7 +121,7 @@ public class GestorDeEventos {
                         this.pantallaAdministrarIntegrantes.iniciar(eventoAEditar);
                         break;
                     case 7:
-                        administrarRecursos(teclado, eventoAEditar);
+                        this.pantallaAdministrarRecursos.iniciar(eventoAEditar);
                         break;
                     case 8:
                         mostrarFeedbacks(eventoAEditar, teclado);
@@ -170,83 +173,6 @@ public class GestorDeEventos {
 
             }
         }
-    }
-
-    private void administrarRecursos(Scanner teclado, Evento eventoAEditar) {
-        int opcion = -1;
-        while (opcion != 0) {
-            mostrarRecursos(eventoAEditar);
-            System.out.println(); //espacio entre el listado y el menu
-            var menu = """
-                    1 - Agregar
-                    2 - Eliminar
-                    3 - Editar
-                    0 - Volver al menu anterior
-                    """;
-            System.out.println(menu);
-            opcion = teclado.nextInt();
-            teclado.nextLine();
-
-            switch (opcion) {
-                case 1:
-                    agregarRecurso(teclado, eventoAEditar);
-                    break;
-                case 2:
-                    eliminarRecurso(teclado, eventoAEditar);
-                    break;
-                case 3:
-
-                    editarRecursoExistente(teclado, eventoAEditar);
-                    break;
-                case 0:
-                    System.out.println("Volviendo al menu principal");
-                default:
-                    System.out.println("Opción inválida");
-            }
-        }
-    }
-
-    public void mostrarRecursos(Evento eventoAEditar) {
-        if (eventoAEditar.tieneRecursos()) {
-            int numeracion = 1;
-            System.out.println("Recursos: ");
-            List<Recurso> recursos = eventoAEditar.getRecursos();
-            for (Recurso in : recursos) {
-                System.out.println(numeracion + ".  " + in.getNombre());
-                numeracion += 1;
-            }
-        } else {
-            System.out.println("No hay recursos asignados en este evento");
-        }
-    }
-
-    private void editarRecursoExistente(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del recurso editar");
-        int numero = teclado.nextInt();
-        teclado.nextLine();
-        int tamanioLista = eventoAEditar.cantidadRecursos();
-        if (numero <= tamanioLista) {
-            Recurso recurso = eventoAEditar.obtenerRecurso(numero - 1);
-            System.out.println("Ingrese el nuevo nombre del recurso: ");
-            String nombre = teclado.nextLine();
-            recurso.setNombre(nombre);
-        }
-    }
-
-    private void eliminarRecurso(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del recurso a eliminar");
-        int numero = teclado.nextInt();
-        int tamanioLista = eventoAEditar.cantidadRecursos();
-        if (numero <= tamanioLista) {
-            eventoAEditar.eliminarRecurso(numero - 1);
-        }
-
-    }
-
-    private void agregarRecurso(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa recurso a agregar :");
-        String recurso = teclado.nextLine();
-        eventoAEditar.agregarRecurso(recurso);
     }
 
     private void editarDescripcion(Scanner teclado, Evento eventoAEditar) {
