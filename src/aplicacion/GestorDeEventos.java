@@ -52,9 +52,6 @@ public class GestorDeEventos {
                     Evento evento = this.pantallaCrearEvento.crear();
                     this.eventos.add(evento);
                     break;
-                case 'z':
-                    buscarEvento(teclado);
-                    break;
                 case 'b':
                     editarEvento(teclado);
                     break;
@@ -197,7 +194,7 @@ public class GestorDeEventos {
     }
 
 
-    public void buscarEvento(Scanner teclado) {
+   /*/ public void buscarEvento(Scanner teclado) {
         List<Evento> eventosEncontrados = new ArrayList<>();
         System.out.println("Ingresa nombre del evento:");
         String nombreEvento = teclado.next();
@@ -214,7 +211,7 @@ public class GestorDeEventos {
             }
 
         }
-    }
+    }/*/
 }
 
 
