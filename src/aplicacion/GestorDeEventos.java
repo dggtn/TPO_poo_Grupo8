@@ -1,6 +1,7 @@
 package aplicacion;
 
 import modelo.*;
+import pantallas.PantallaCrearEvento;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,9 +12,11 @@ import java.util.Scanner;
 
 public class GestorDeEventos {
     private List<Evento> eventos;
+    private PantallaCrearEvento pantallaCrearEvento;
 
     public GestorDeEventos() {
         this.eventos = new ArrayList<>();
+        this.pantallaCrearEvento = new PantallaCrearEvento(new Scanner(System.in));
     }
 
     public static void main(String[] args) {
@@ -39,7 +42,8 @@ public class GestorDeEventos {
 
             switch (opcion) {
                 case 'a':
-                    crearEvento(teclado);
+                    Evento evento = this.pantallaCrearEvento.crear();
+                    this.eventos.add(evento);
                     break;
                 case 'z':
                     buscarEvento(teclado);
@@ -402,39 +406,6 @@ public class GestorDeEventos {
             }
 
         }
-    }
-
-    public void crearEvento(Scanner teclado) {
-        System.out.println("Ingresa nombre del evento:");
-        String nombreEvento = teclado.nextLine();
-
-        System.out.println("Ingresa la descripción del evento:");
-        String descripcionEvento = teclado.nextLine();
-
-        System.out.println("Ingresa capacidad maxima del evento: ");
-        int capacidadMaxima = this.leerNumeroEntero(teclado, "La capacidad maxima deber ser un numero mayor a 0");
-
-        System.out.println(" Ingresa fecha del evento (dd/MM/yyyy): ");
-        String fechaEvento = teclado.next();
-
-        LocalDate fecha= LocalDate.parse(fechaEvento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        teclado.nextLine(); //para ignorar el enter
-
-        System.out.println(" Ingresa ubicación del evento:");
-        System.out.println("Ingresa provincia:");
-        String provincia = teclado.nextLine();
-        System.out.println("Ingresa ciudad:");
-        String ciudad = teclado.nextLine();
-        System.out.println("Ingresa codigo postal: ");
-        int codigoPostal = this.leerNumeroEntero(teclado,"El codigo postal debe ser un numero entero");
-        System.out.println(" Ingresa numero de domicilio:");
-        int numero = this.leerNumeroEntero(teclado,"El numero de domicilio debe ser un numero entero");
-        System.out.println(" Ingresa calle:");
-        String calle = teclado.next();
-
-        Ubicacion ubicacion = new Ubicacion(provincia, ciudad, codigoPostal, numero, calle);
-        Evento evento = new Evento(nombreEvento, descripcionEvento, capacidadMaxima, fecha, ubicacion);
-        eventos.add(evento);
     }
 
     private int leerNumeroEntero(Scanner teclado, String mensajeDeError) {
