@@ -29,13 +29,6 @@ public class Evento {
         integrantes.add(persona);
     }
 
-    public void eliminarIntegrante(String nombre) {
-        Persona persona = new Persona(nombre);
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
@@ -49,21 +42,6 @@ public class Evento {
         this.fecha = fecha;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
 
     public int getCapacidadMaxima() {
         return capacidadMaxima;
@@ -73,11 +51,6 @@ public class Evento {
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public void escribirFeedback(String mensaje, Persona autor) {
-        System.out.println("Autor del mensaje:" + autor);
-        System.out.println(mensaje);
-
-    }
 
     public String getNombre() {
         return nombre;

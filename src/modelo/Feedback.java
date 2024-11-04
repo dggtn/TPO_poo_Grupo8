@@ -8,17 +8,11 @@ public class Feedback {
         return mensaje;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
 
     public String getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
 
     public Feedback(String mensaje, String autor) {
         this.mensaje = mensaje;
