@@ -2,15 +2,16 @@ package pantallas;
 
 import modelo.Evento;
 import modelo.Feedback;
+import modelo.Teclado;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class PantallaMostrarFeedback {
-    private final Scanner teclado;
+    private final Teclado teclado;
 
-    public PantallaMostrarFeedback(Scanner teclado) {
-        this.teclado = teclado;
+    public PantallaMostrarFeedback(Teclado teclado) {
+        this.teclado = new Teclado();
     }
 
     public void mostrarFeedback(Evento eventoAEditar) {
@@ -32,15 +33,15 @@ public class PantallaMostrarFeedback {
                     0 - Volver a menu principal
                     """;
             System.out.println(menu);
-            opcion = teclado.nextInt();
-            teclado.nextLine();
+            opcion = teclado.leerNumero();
+            teclado.leerTexto();
 
             switch (opcion) {
                 case 1:
                     System.out.println("Escribe el feedback:");
-                    String mensaje = teclado.nextLine();
+                    String mensaje = teclado.leerTexto();
                     System.out.println("Escribe tu nombre:");
-                    String autor = teclado.nextLine();
+                    String autor = teclado.leerTexto();
                     eventoAEditar.darFeedback(mensaje, autor);
                     break;
                 case 0:

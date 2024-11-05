@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GestorDeEventos {
+    private final Teclado teclado;
     private List<Evento> eventos;
     private PantallaCrearEvento pantallaCrearEvento;
     private PantallaEditarUbicacion pantallaEditarUbicacion;
@@ -18,12 +19,14 @@ public class GestorDeEventos {
     private PantallaMostrarFeedback pantallaMostrarFeedback;
 
     public GestorDeEventos() {
+        this.teclado = new Teclado();
         this.eventos = new ArrayList<>();
-        this.pantallaCrearEvento = new PantallaCrearEvento(new Scanner(System.in));
-        this.pantallaEditarUbicacion = new PantallaEditarUbicacion(new Scanner(System.in));
-        this.pantallaAdministrarIntegrantes = new PantallaAdministrarIntegrantes(new Scanner(System.in));
+        this.pantallaCrearEvento = new PantallaCrearEvento(this.teclado);
+        this.pantallaEditarUbicacion = new PantallaEditarUbicacion(this.teclado);
+        this.pantallaAdministrarIntegrantes = new PantallaAdministrarIntegrantes(this.teclado);
         this.pantallaAdministrarRecursos = new PantallaAdministrarRecursos(new Scanner(System.in));
-        this.pantallaMostrarFeedback = new PantallaMostrarFeedback(new Scanner(System.in));
+        this.pantallaMostrarFeedback = new PantallaMostrarFeedback(this.teclado);
+
     }
 
     public static void main(String[] args) {
@@ -140,19 +143,19 @@ public class GestorDeEventos {
 
     private void editarNombre(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo nombre");
-        String nombre = teclado.nextLine();
+        String nombre = this.teclado.leerLinea();
         eventoAEditar.setNombre(nombre);
     }
 
     private void editarFecha(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa la nueva fecha");
-        String fecha = teclado.nextLine();
+        String fecha = this.teclado.leerTexto();
         eventoAEditar.setFecha(LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
     }
 
     private void editarCapacidad(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa la nueva capacidad maxima");
-        int capacidadMaxima = teclado.nextInt();
+        int capacidadMaxima = this.teclado.leerNumero();
         eventoAEditar.setCapacidadMaxima(capacidadMaxima);
     }
 

@@ -1,7 +1,7 @@
 package modelo;
 
 public class Recurso {
-    String nombre;
+    private String nombre;
 
     public String getNombre() {
         return nombre;

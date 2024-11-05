@@ -1,14 +1,15 @@
 package pantallas;
 
 import modelo.Evento;
+import modelo.Teclado;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PantallaEditarUbicacion {
-    private final Scanner teclado;
-    public PantallaEditarUbicacion (Scanner teclado){
-        this.teclado = teclado;
+    private final Teclado teclado;
+    public PantallaEditarUbicacion (Teclado teclado){
+        this.teclado = new Teclado();
     }
     public void editarUbicacion(Evento eventoAEditar) {
         int opcion = -1;
@@ -29,27 +30,27 @@ public class PantallaEditarUbicacion {
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
-            opcion = teclado.nextInt();
-            teclado.nextLine();
+            opcion = teclado.leerNumero();
+            teclado.leerLinea();
 
             switch (opcion) {
                 case 1:
 
-                    editarProvincia(teclado, eventoAEditar);
+                    editarProvincia(eventoAEditar);
                     break;
                 case 2:
 
-                    editarCiudad(teclado, eventoAEditar);
+                    editarCiudad(eventoAEditar);
                     break;
                 case 3:
 
-                    editarCodigo(teclado, eventoAEditar);
+                    editarCodigo(eventoAEditar);
                     break;
                 case 4:
-                    editarNumero(teclado, eventoAEditar);
+                    editarNumero( eventoAEditar);
                     break;
                 case 5:
-                    editarCalle(teclado, eventoAEditar);
+                    editarCalle(eventoAEditar);
                     break;
                 case 0 :
                     System.out.println("Volviendo al menu principal");
@@ -59,49 +60,36 @@ public class PantallaEditarUbicacion {
         }
     }
 
-    private void editarProvincia(Scanner teclado, Evento eventoAEditar) {
+    private void editarProvincia( Evento eventoAEditar) {
         System.out.println("Ingresa la nueva provincia:");
-        String provincia = teclado.nextLine();
+        String provincia = teclado.leerLinea();
         eventoAEditar.getUbicacion().setProvincia(provincia);
     }
 
-    private void editarCiudad(Scanner teclado, Evento eventoAEditar) {
+    private void editarCiudad(Evento eventoAEditar) {
         System.out.println("Ingresa la nueva ciudad:");
-        String ciudad = teclado.nextLine();
+        String ciudad = teclado.leerLinea();
         eventoAEditar.getUbicacion().setCiudad(ciudad);
     }
 
-    private void editarCodigo(Scanner teclado, Evento eventoAEditar) {
+    private void editarCodigo(Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo codigo:");
-        int codigo = this.leerNumeroEntero(teclado,"El codigo postal debe ser un numero entero");
+        int codigo = this.teclado.leerNumeroEntero("El codigo postal debe ser un numero entero");
         eventoAEditar.getUbicacion().setCodigoPostal(codigo);
     }
 
-    private void editarNumero(Scanner teclado, Evento eventoAEditar) {
+    private void editarNumero(Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo numero:");
-        int numero = this.leerNumeroEntero(teclado,"El numero de domicilio debe ser un numero entero");
+        int numero = this.teclado.leerNumeroEntero("El numero de domicilio debe ser un numero entero");
         eventoAEditar.getUbicacion().setNumero(numero);
     }
 
-    private void editarCalle(Scanner teclado, Evento eventoAEditar) {
+    private void editarCalle(Evento eventoAEditar) {
         System.out.println("Ingresa la nueva calle:");
-        String calle = teclado.nextLine();
+        String calle = teclado.leerLinea();
         eventoAEditar.getUbicacion().setCalle(calle);
     }
-    private int leerNumeroEntero(Scanner teclado, String mensajeDeError) {
-        int valor = 0;
-        boolean seguirPidiendo = true;
-        while (seguirPidiendo) {
-            try {
-                valor = teclado.nextInt();
-                seguirPidiendo = false;
-            } catch(InputMismatchException e){
-                teclado.nextLine();
-                System.out.println(mensajeDeError);
-            }
-        }
-        return valor;
-    }
+
 
 
 }

@@ -2,16 +2,16 @@ package pantallas;
 
 import modelo.Evento;
 import modelo.Persona;
+import modelo.Teclado;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class PantallaAdministrarIntegrantes {
 
-    private final Scanner teclado;
+    private final Teclado teclado;
 
-    public PantallaAdministrarIntegrantes(Scanner teclado) {
-        this.teclado = teclado;
+    public PantallaAdministrarIntegrantes(Teclado teclado) {
+        this.teclado = new Teclado();
     }
     public void iniciar(Evento eventoAEditar){
         int opcion = -1;
@@ -25,8 +25,8 @@ public class PantallaAdministrarIntegrantes {
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
-            opcion = teclado.nextInt();
-            teclado.nextLine();
+            opcion = teclado.leerNumero();
+            teclado.leerTexto();
 
             switch (opcion) {
                 case 1:
@@ -48,7 +48,7 @@ public class PantallaAdministrarIntegrantes {
     }
     private void eliminarIntegrante(Evento eventoAEditar) {
         System.out.println("Ingresa el numero del integrante a eliminar");
-        int numero = teclado.nextInt();
+        int numero = teclado.leerNumero();
         int tamanioLista = eventoAEditar.cantidadIntegrantes();
         if (numero <= tamanioLista) {
             eventoAEditar.eliminarIntegrante(numero - 1);
@@ -71,18 +71,18 @@ public class PantallaAdministrarIntegrantes {
     }
     private void agregarIntegrante(Evento eventoAEditar) {
         System.out.println("Ingresa el nombre a agregar");
-        String nombre = teclado.nextLine();
+        String nombre = teclado.leerTexto();
         eventoAEditar.agregarIntegrante(nombre);
     }
     private void editarIntegranteExistente(Evento eventoAEditar) {
         System.out.println("Ingresa el numero del integrante a editar");
-        int numero = teclado.nextInt();
-        teclado.nextLine();
+        int numero = teclado.leerNumero();
+        teclado.leerTexto();
         int tamanioLista = eventoAEditar.cantidadIntegrantes();
         if (numero <= tamanioLista) {
             Persona integrante = eventoAEditar.obtenerIntegrante(numero - 1);
             System.out.println("Ingrese el nuevo nombre del integrante: ");
-            String nombre = teclado.nextLine();
+            String nombre = teclado.leerLinea();
             integrante.setNombre(nombre);
         }
     }

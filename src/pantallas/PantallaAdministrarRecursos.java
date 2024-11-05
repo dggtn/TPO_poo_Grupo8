@@ -2,17 +2,18 @@ package pantallas;
 
 import modelo.Evento;
 import modelo.Recurso;
+import modelo.Teclado;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class PantallaAdministrarRecursos {
 
-    private final Scanner teclado;
+    private final Teclado teclado;
 
 
     public PantallaAdministrarRecursos(Scanner teclado) {
-        this.teclado = teclado;
+        this.teclado = new Teclado();
     }
 
     public void iniciar(Evento eventoAEditar) {
@@ -27,8 +28,8 @@ public class PantallaAdministrarRecursos {
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
-            opcion = teclado.nextInt();
-            teclado.nextLine();
+            opcion = teclado.leerNumero();
+            teclado.leerLinea();
 
             switch (opcion) {
                 case 1:
@@ -50,7 +51,7 @@ public class PantallaAdministrarRecursos {
 
     private void eliminarRecurso(Evento eventoAEditar) {
         System.out.println("Ingresa el numero del recurso a eliminar");
-        int numero = teclado.nextInt();
+        int numero = teclado.leerNumero();
         int tamanioLista = eventoAEditar.cantidadRecursos();
         if (numero <= tamanioLista) {
             eventoAEditar.eliminarRecurso(numero - 1);
@@ -60,19 +61,19 @@ public class PantallaAdministrarRecursos {
 
     private void agregarRecurso(Evento eventoAEditar) {
         System.out.println("Ingresa recurso a agregar :");
-        String recurso = teclado.nextLine();
+        String recurso = teclado.leerLinea();
         eventoAEditar.agregarRecurso(recurso);
     }
 
     private void editarRecursoExistente(Evento eventoAEditar) {
         System.out.println("Ingresa el numero del recurso editar");
-        int numero = teclado.nextInt();
-        teclado.nextLine();
+        int numero = teclado.leerNumero();
+        teclado.leerLinea();
         int tamanioLista = eventoAEditar.cantidadRecursos();
         if (numero <= tamanioLista) {
             Recurso recurso = eventoAEditar.obtenerRecurso(numero - 1);
             System.out.println("Ingrese el nuevo nombre del recurso: ");
-            String nombre = teclado.nextLine();
+            String nombre = teclado.leerLinea();
             recurso.setNombre(nombre);
         }
     }

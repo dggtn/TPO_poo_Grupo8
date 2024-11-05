@@ -1,11 +1,11 @@
 package modelo;
 
 public class Ubicacion {
-    String provincia;
-    String ciudad;
-    int codigoPostal;
-    String calle;
-    int numero;
+    private String provincia;
+    private String ciudad;
+    private int codigoPostal;
+    private String calle;
+    private int numero;
 
 
     public Ubicacion(String provincia, String ciudad, int codigoPostal, int numero, String calle) {

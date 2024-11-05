@@ -1,7 +1,7 @@
 package modelo;
 
 public class Persona {
-    String nombre;
+   private String nombre;
 
     public String getNombre() {
         return nombre;
