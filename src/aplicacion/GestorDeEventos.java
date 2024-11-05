@@ -6,6 +6,7 @@ import pantallas.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -149,8 +150,8 @@ public class GestorDeEventos {
 
     private void editarFecha(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa la nueva fecha");
-        String fecha = this.teclado.leerTexto();
-        eventoAEditar.setFecha(LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+        LocalDate fecha = this.teclado.leerFecha("Ingesa en formato dd/MM/yyyy");
+        eventoAEditar.setFecha(fecha);
     }
 
     private void editarCapacidad(Scanner teclado, Evento eventoAEditar) {

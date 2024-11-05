@@ -1,8 +1,12 @@
 package modelo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.zip.DataFormatException;
 
 public class Teclado {
 
@@ -39,5 +43,23 @@ public class Teclado {
         }
         return valor;
     }
+
+    public LocalDate leerFecha(String mensajeDeError) {
+        LocalDate valor = null;
+        boolean seguirPidiendo = true;
+        while (seguirPidiendo) {
+            try {
+                String texto = this.scanner.next();
+                valor =LocalDate.parse(texto, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                seguirPidiendo = false;
+            } catch (DateTimeParseException e) {
+                this.scanner.nextLine();
+                System.out.println(mensajeDeError);
+            }
+        }
+        return valor;
+    }
+
+
 }
 

@@ -25,10 +25,7 @@ public class PantallaCrearEvento {
         System.out.println("Ingresa capacidad maxima del evento: ");
         int capacidadMaxima = this.teclado.leerNumeroEntero( "La capacidad maxima deber ser un numero mayor a 0");
 
-        System.out.println(" Ingresa fecha del evento (dd/MM/yyyy): ");
-        String fechaEvento = teclado.leerTexto();
-
-        LocalDate fecha= LocalDate.parse(fechaEvento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate fecha= teclado.leerFecha(" Ingresa fecha del evento (dd/MM/yyyy): ");
         teclado.leerLinea();;
 
         System.out.println(" Ingresa ubicación del evento:");
