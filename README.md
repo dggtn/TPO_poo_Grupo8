@@ -17,5 +17,5 @@
 <p>Java: Lenguaje de programación principal.</p>
 <div>
 <h2>Diagrama de clases:</h2>
-<img>![image](https://github.com/user-attachments/assets/50f8355c-6714-49e8-ba7f-76a47c9f902b)<img>
+<img>![image](https://github.com/user-attachments/assets/1c74ce39-cf4b-4d9f-9efe-9f3d227a1f80)<img>
 </div>
