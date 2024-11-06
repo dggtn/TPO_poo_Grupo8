@@ -38,9 +38,6 @@ public class PantallaAdministrarRecursos {
                 case 2:
                     eliminarRecurso(eventoAEditar);
                     break;
-                case 3:
-                    editarRecursoExistente(eventoAEditar);
-                    break;
                 case 0:
                     System.out.println("Volviendo al menu principal");
                 default:
@@ -65,18 +62,6 @@ public class PantallaAdministrarRecursos {
         eventoAEditar.agregarRecurso(recurso);
     }
 
-    private void editarRecursoExistente(Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del recurso editar");
-        int numero = teclado.leerNumero();
-        teclado.leerLinea();
-        int tamanioLista = eventoAEditar.cantidadRecursos();
-        if (numero <= tamanioLista) {
-            Recurso recurso = eventoAEditar.obtenerRecurso(numero - 1);
-            System.out.println("Ingrese el nuevo nombre del recurso: ");
-            String nombre = teclado.leerLinea();
-            recurso.setNombre(nombre);
-        }
-    }
 
     private void mostrarRecursos(Evento eventoAEditar) {
         if (eventoAEditar.tieneRecursos()) {

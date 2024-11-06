@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class GestorDeEventos {
     private final Teclado teclado;
     private List<Evento> eventos;
+
     private PantallaCrearEvento pantallaCrearEvento;
     private PantallaEditarUbicacion pantallaEditarUbicacion;
     private PantallaAdministrarIntegrantes pantallaAdministrarIntegrantes;
@@ -83,14 +84,13 @@ public class GestorDeEventos {
                 System.out.println(eventoAEditar.obtenerDetalleUbicacion());
                 System.out.println(); //espacio entre el listado y el menu
                 var menu = """
-                        1 - Editar Nombre
+                        1 - Ver feedbacks del evento
                         2 - Editar fecha
                         3 - Editar capacidad
                         4 - Editar Ubicación
                         5 - Editar Descripcion
                         6 - Administrar Integrantes
                         7 - Administrar Recursos
-                        8 - Ver feedbacks del evento
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
@@ -100,7 +100,7 @@ public class GestorDeEventos {
                 switch (opcion) {
                     case 1:
 
-                        editarNombre(teclado, eventoAEditar);
+                        this.pantallaMostrarFeedback.mostrarFeedback(eventoAEditar);
                         break;
                     case 2:
 
@@ -122,9 +122,6 @@ public class GestorDeEventos {
                     case 7:
                         this.pantallaAdministrarRecursos.iniciar(eventoAEditar);
                         break;
-                    case 8:
-                        this.pantallaMostrarFeedback.mostrarFeedback(eventoAEditar);
-                        break;
                     case 0:
                         System.out.println("Volviendo al menu principal");
                     default:
@@ -139,12 +136,6 @@ public class GestorDeEventos {
         System.out.println("Ingresa la nueva descripción");
         String descripcion = teclado.nextLine();
         eventoAEditar.setDescripcion(descripcion);
-    }
-
-    private void editarNombre(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa el nuevo nombre");
-        String nombre = this.teclado.leerLinea();
-        eventoAEditar.setNombre(nombre);
     }
 
     private void editarFecha(Scanner teclado, Evento eventoAEditar) {
@@ -166,9 +157,7 @@ public class GestorDeEventos {
         } else {
             mostrarEventosPasados();
             mostrarEventosEnCurso();
-
         }
-
         System.out.println();
     }
 
@@ -177,6 +166,7 @@ public class GestorDeEventos {
 
         int numeracion = 1;
         System.out.println("Eventos Pasados: ");
+
 
         for (Evento ev : eventosPasados) {
             System.out.println(numeracion + ".  " + ev.getNombre() + " (" + ev.getFecha() + ")");

@@ -32,18 +32,12 @@ public class PantallaCrearEvento {
         teclado.leerLinea();;
 
         System.out.println(" Ingresa ubicación del evento:");
-        System.out.println("Ingresa provincia:");
-        String provincia = teclado.leerLinea();;
-        System.out.println("Ingresa ciudad:");
-        String ciudad = teclado.leerLinea();;
-        System.out.println("Ingresa codigo postal: ");
-        int codigoPostal = this.teclado.leerNumeroEntero("El codigo postal debe ser un numero entero");
         System.out.println(" Ingresa numero de domicilio:");
         int numero = this.teclado.leerNumeroEntero( "El numero de domicilio debe ser un numero entero");
         System.out.println(" Ingresa calle:");
         String calle = teclado.leerTexto();
 
-        Ubicacion ubicacion = new Ubicacion(provincia, ciudad, codigoPostal, numero, calle);
+        Ubicacion ubicacion = new Ubicacion(numero, calle);
         return new Evento(nombreEvento, descripcionEvento, capacidadMaxima, fecha, ubicacion);
     }
 

@@ -21,7 +21,6 @@ public class PantallaAdministrarIntegrantes {
             var menu = """
                     1 - Agregar
                     2 - Eliminar
-                    3 - Editar
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
@@ -34,10 +33,6 @@ public class PantallaAdministrarIntegrantes {
                     break;
                 case 2:
                     eliminarIntegrante(eventoAEditar);
-                    break;
-                case 3:
-
-                    editarIntegranteExistente(eventoAEditar);
                     break;
                 case 0 :
                     System.out.println("Volviendo al menu principal");
@@ -74,16 +69,5 @@ public class PantallaAdministrarIntegrantes {
         String nombre = teclado.leerTexto();
         eventoAEditar.agregarIntegrante(nombre);
     }
-    private void editarIntegranteExistente(Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del integrante a editar");
-        int numero = teclado.leerNumero();
-        teclado.leerTexto();
-        int tamanioLista = eventoAEditar.cantidadIntegrantes();
-        if (numero <= tamanioLista) {
-            Persona integrante = eventoAEditar.obtenerIntegrante(numero - 1);
-            System.out.println("Ingrese el nuevo nombre del integrante: ");
-            String nombre = teclado.leerLinea();
-            integrante.setNombre(nombre);
-        }
-    }
+
 }

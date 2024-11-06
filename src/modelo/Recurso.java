@@ -7,10 +7,6 @@ public class Recurso {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Recurso(String nombre) {
         this.nombre = nombre;
     }

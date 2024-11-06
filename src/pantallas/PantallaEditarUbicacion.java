@@ -15,18 +15,12 @@ public class PantallaEditarUbicacion {
         int opcion = -1;
         while (opcion != 0) {
             System.out.println("Ingresa el numero de opción que quieres editar:");
-            System.out.println("Provincia: " + eventoAEditar.getUbicacion().getProvincia());
-            System.out.println("Ciudad: " + eventoAEditar.getUbicacion().getCiudad());
-            System.out.println("Codigo:  " + eventoAEditar.getUbicacion().getCodigoPostal());
             System.out.println("Numero:  " + eventoAEditar.getUbicacion().getNumero());
             System.out.println("Calle:  " + eventoAEditar.getUbicacion().getCalle());
             System.out.println(); //espacio entre el listado y el menu
             var menu = """
-                    1 - Editar provincia
-                    2 - Editar ciudad
-                    3 - Editar codigo
-                    4 - Editar numero
-                    5 - Editar calle
+                    1 - Editar calle
+                    2 - Editar numero
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
@@ -35,21 +29,9 @@ public class PantallaEditarUbicacion {
 
             switch (opcion) {
                 case 1:
-
-                    editarProvincia(eventoAEditar);
+                    editarNumero(eventoAEditar);
                     break;
                 case 2:
-
-                    editarCiudad(eventoAEditar);
-                    break;
-                case 3:
-
-                    editarCodigo(eventoAEditar);
-                    break;
-                case 4:
-                    editarNumero( eventoAEditar);
-                    break;
-                case 5:
                     editarCalle(eventoAEditar);
                     break;
                 case 0 :
@@ -58,24 +40,6 @@ public class PantallaEditarUbicacion {
                     System.out.println("Opción inválida");
             }
         }
-    }
-
-    private void editarProvincia( Evento eventoAEditar) {
-        System.out.println("Ingresa la nueva provincia:");
-        String provincia = teclado.leerLinea();
-        eventoAEditar.getUbicacion().setProvincia(provincia);
-    }
-
-    private void editarCiudad(Evento eventoAEditar) {
-        System.out.println("Ingresa la nueva ciudad:");
-        String ciudad = teclado.leerLinea();
-        eventoAEditar.getUbicacion().setCiudad(ciudad);
-    }
-
-    private void editarCodigo(Evento eventoAEditar) {
-        System.out.println("Ingresa el nuevo codigo:");
-        int codigo = this.teclado.leerNumeroEntero("El codigo postal debe ser un numero entero");
-        eventoAEditar.getUbicacion().setCodigoPostal(codigo);
     }
 
     private void editarNumero(Evento eventoAEditar) {
@@ -89,7 +53,5 @@ public class PantallaEditarUbicacion {
         String calle = teclado.leerLinea();
         eventoAEditar.getUbicacion().setCalle(calle);
     }
-
-
 
 }
