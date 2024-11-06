@@ -21,7 +21,8 @@ public class Teclado {
         return this.scanner.nextLine();
     }
 
-    public String leerTexto() {
+    public String leerTexto(String titulo) {
+        System.out.println(titulo);
         return this.scanner.next();
     }
 

@@ -69,8 +69,7 @@ public class PantallaAdministrarIntegrantes {
         }
     }
     private void agregarIntegrante(Evento eventoAEditar) {
-        System.out.println("Ingresa el nombre a agregar");
-        String nombre = teclado.leerTexto();
+        String nombre = teclado.leerTexto("Ingresa el nombre a agregar");
         eventoAEditar.agregarIntegrante(nombre);
     }
     private void editarIntegranteExistente(Evento eventoAEditar) {

@@ -7,9 +7,7 @@ import java.util.List;
 public class Evento {
     private String nombre;
     private String descripcion;
-    private String estado;
     private LocalDate fecha;
-    private String tipo;
     private int capacidadMaxima;
     private List<Persona> integrantes;
     private List<Recurso> recursos;

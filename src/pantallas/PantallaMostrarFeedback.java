@@ -34,14 +34,12 @@ public class PantallaMostrarFeedback {
                     """;
             System.out.println(menu);
             opcion = teclado.leerNumeroEntero("Opción a elegir:  ","La opción debe ser numero entero");
-            teclado.leerTexto();
+
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Escribe el feedback:");
-                    String mensaje = teclado.leerTexto();
-                    System.out.println("Escribe tu nombre:");
-                    String autor = teclado.leerTexto();
+                    String mensaje = teclado.leerTexto("Escribe el feedback:");
+                    String autor = teclado.leerTexto("Escribe tu nombre:");
                     eventoAEditar.darFeedback(mensaje, autor);
                     break;
                 case 0:

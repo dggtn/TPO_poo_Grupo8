@@ -49,7 +49,7 @@ public class GestorDeEventos {
                     0 - Salir
                     """;
             System.out.println(menu);
-            opcion = this.teclado.leerTexto().charAt(0);
+            opcion = this.teclado.leerTexto("Opcion a elegir: ").charAt(0);
             this.teclado.leerLinea();
 
             switch (opcion) {
