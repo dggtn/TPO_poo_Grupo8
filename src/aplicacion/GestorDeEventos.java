@@ -2,11 +2,8 @@ package aplicacion;
 
 import modelo.*;
 import pantallas.*;
-
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -28,6 +25,10 @@ public class GestorDeEventos {
         this.pantallaAdministrarRecursos = new PantallaAdministrarRecursos(new Scanner(System.in));
         this.pantallaMostrarFeedback = new PantallaMostrarFeedback(this.teclado);
 
+        //borrarlo
+        Ubicacion ubicacion = new Ubicacion("provincia","ciudad",14060, 87, "calle");
+        Evento evento = new Evento("Prueba", "Descripcidn de prueba", 1, LocalDate.now(), ubicacion);
+        this.eventos.add(evento);
     }
 
     public static void main(String[] args) {
@@ -48,8 +49,8 @@ public class GestorDeEventos {
                     0 - Salir
                     """;
             System.out.println(menu);
-            opcion = teclado.next().charAt(0);
-            teclado.nextLine();
+            opcion = this.teclado.leerTexto().charAt(0);
+            this.teclado.leerLinea();
 
             switch (opcion) {
                 case 'a':
@@ -71,8 +72,7 @@ public class GestorDeEventos {
     }
 
     private void editarEvento(Scanner teclado) {
-        System.out.println("Ingresa el numero de evento que quieres editar:");
-        int numeracion = teclado.nextInt();
+        int numeracion = this.teclado.leerNumeroEntero("Ingresa el numero de evento que quieres editar:","Debe ser un numero entero");
         if (numeracion != 0 && numeracion <= eventos.size()) {
             Evento eventoAEditar = eventos.get(numeracion - 1);
 
@@ -95,8 +95,7 @@ public class GestorDeEventos {
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
-                opcion = teclado.nextInt();
-                teclado.nextLine();
+                opcion = this.teclado.leerNumeroEntero("Opción a elegir:  ","La opción debe ser un numero");
 
                 switch (opcion) {
                     case 1:
@@ -138,7 +137,7 @@ public class GestorDeEventos {
 
     private void editarDescripcion(Scanner teclado, Evento eventoAEditar) {
         System.out.println("Ingresa la nueva descripción");
-        String descripcion = teclado.nextLine();
+        String descripcion = this.teclado.leerLinea();
         eventoAEditar.setDescripcion(descripcion);
     }
 
@@ -155,8 +154,7 @@ public class GestorDeEventos {
     }
 
     private void editarCapacidad(Scanner teclado, Evento eventoAEditar) {
-        System.out.println("Ingresa la nueva capacidad maxima");
-        int capacidadMaxima = this.teclado.leerNumero();
+        int capacidadMaxima = this.teclado.leerNumeroEntero("Ingresa la nueva capacidad maxima","La capacidad maxima debe ser un numero entero");
         eventoAEditar.setCapacidadMaxima(capacidadMaxima);
     }
 

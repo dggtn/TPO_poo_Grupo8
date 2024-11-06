@@ -25,8 +25,7 @@ public class PantallaAdministrarIntegrantes {
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
-            opcion = teclado.leerNumero();
-            teclado.leerTexto();
+            opcion = teclado.leerNumeroEntero("Opción a elegir:  ","La opción debe ser un número");
 
             switch (opcion) {
                 case 1:
@@ -48,7 +47,7 @@ public class PantallaAdministrarIntegrantes {
     }
     private void eliminarIntegrante(Evento eventoAEditar) {
         System.out.println("Ingresa el numero del integrante a eliminar");
-        int numero = teclado.leerNumero();
+        int numero = teclado.leerNumeroEntero("Menú: ","Debe ser un numero entero");
         int tamanioLista = eventoAEditar.cantidadIntegrantes();
         if (numero <= tamanioLista) {
             eventoAEditar.eliminarIntegrante(numero - 1);
@@ -75,9 +74,7 @@ public class PantallaAdministrarIntegrantes {
         eventoAEditar.agregarIntegrante(nombre);
     }
     private void editarIntegranteExistente(Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del integrante a editar");
-        int numero = teclado.leerNumero();
-        teclado.leerTexto();
+        int numero = teclado.leerNumeroEntero("Ingresa el numero del integrante a editar","La opcion debe ser un numero");
         int tamanioLista = eventoAEditar.cantidadIntegrantes();
         if (numero <= tamanioLista) {
             Persona integrante = eventoAEditar.obtenerIntegrante(numero - 1);

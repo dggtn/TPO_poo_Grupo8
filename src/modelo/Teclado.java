@@ -3,10 +3,10 @@ package modelo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Date;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.zip.DataFormatException;
+
 
 public class Teclado {
 
@@ -25,11 +25,8 @@ public class Teclado {
         return this.scanner.next();
     }
 
-    public int leerNumero() {
-        return this.scanner.nextInt();
-    }
-
-    public int leerNumeroEntero(String mensajeDeError) {
+    public int leerNumeroEntero(String titulo,String mensajeDeError) {
+        System.out.println(titulo);
         int valor = 0;
         boolean seguirPidiendo = true;
         while (seguirPidiendo) {
@@ -37,8 +34,9 @@ public class Teclado {
                 valor = this.scanner.nextInt();
                 seguirPidiendo = false;
             } catch (InputMismatchException e) {
-                this.scanner.nextLine();
                 System.out.println(mensajeDeError);
+            }finally{
+                this.scanner.nextLine();
             }
         }
         return valor;
@@ -49,6 +47,7 @@ public class Teclado {
         boolean seguirPidiendo = true;
         while (seguirPidiendo) {
             try {
+                System.out.println("Ingresa fecha del evento (dd/MM/yyyy): ");
                 String texto = this.scanner.next();
                 valor =LocalDate.parse(texto, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 seguirPidiendo = false;

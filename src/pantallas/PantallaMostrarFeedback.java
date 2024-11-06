@@ -5,7 +5,7 @@ import modelo.Feedback;
 import modelo.Teclado;
 
 import java.util.List;
-import java.util.Scanner;
+
 
 public class PantallaMostrarFeedback {
     private final Teclado teclado;
@@ -33,7 +33,7 @@ public class PantallaMostrarFeedback {
                     0 - Volver a menu principal
                     """;
             System.out.println(menu);
-            opcion = teclado.leerNumero();
+            opcion = teclado.leerNumeroEntero("Opción a elegir:  ","La opción debe ser numero entero");
             teclado.leerTexto();
 
             switch (opcion) {

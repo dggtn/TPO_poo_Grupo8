@@ -8,7 +8,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/aplicacion/GestorDeEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aplicacion/GestorDeEventos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modelo/Teclado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Teclado.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaAdministrarIntegrantes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaAdministrarIntegrantes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaAdministrarRecursos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaAdministrarRecursos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaCrearEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaCrearEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaEditarUbicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaEditarUbicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaMostrarFeedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaMostrarFeedback.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

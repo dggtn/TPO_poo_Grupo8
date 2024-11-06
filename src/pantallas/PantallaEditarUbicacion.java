@@ -3,9 +3,6 @@ package pantallas;
 import modelo.Evento;
 import modelo.Teclado;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class PantallaEditarUbicacion {
     private final Teclado teclado;
     public PantallaEditarUbicacion (Teclado teclado){
@@ -30,7 +27,7 @@ public class PantallaEditarUbicacion {
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
-            opcion = teclado.leerNumero();
+            opcion = teclado.leerNumeroEntero("Opción a elegir:  ","La opción debe ser numero entero");
             teclado.leerLinea();
 
             switch (opcion) {
@@ -73,14 +70,12 @@ public class PantallaEditarUbicacion {
     }
 
     private void editarCodigo(Evento eventoAEditar) {
-        System.out.println("Ingresa el nuevo codigo:");
-        int codigo = this.teclado.leerNumeroEntero("El codigo postal debe ser un numero entero");
+        int codigo = this.teclado.leerNumeroEntero("Ingresa el nuevo codigo:","El codigo postal debe ser un numero entero");
         eventoAEditar.getUbicacion().setCodigoPostal(codigo);
     }
 
     private void editarNumero(Evento eventoAEditar) {
-        System.out.println("Ingresa el nuevo numero:");
-        int numero = this.teclado.leerNumeroEntero("El numero de domicilio debe ser un numero entero");
+        int numero = this.teclado.leerNumeroEntero("Ingresa el nuevo numero:","El numero de domicilio debe ser un numero entero");
         eventoAEditar.getUbicacion().setNumero(numero);
     }
 

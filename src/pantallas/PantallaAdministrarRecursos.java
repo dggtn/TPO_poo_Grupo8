@@ -28,8 +28,7 @@ public class PantallaAdministrarRecursos {
                     0 - Volver al menu anterior
                     """;
             System.out.println(menu);
-            opcion = teclado.leerNumero();
-            teclado.leerLinea();
+            opcion = teclado.leerNumeroEntero("Opción a elegir:  ","La opcion debe ser numero entero");
 
             switch (opcion) {
                 case 1:
@@ -50,8 +49,7 @@ public class PantallaAdministrarRecursos {
     }
 
     private void eliminarRecurso(Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del recurso a eliminar");
-        int numero = teclado.leerNumero();
+        int numero = teclado.leerNumeroEntero("Ingresa el numero del recurso a eliminar"," el numero del recurso a eliminar debe ser entero");
         int tamanioLista = eventoAEditar.cantidadRecursos();
         if (numero <= tamanioLista) {
             eventoAEditar.eliminarRecurso(numero - 1);
@@ -66,9 +64,7 @@ public class PantallaAdministrarRecursos {
     }
 
     private void editarRecursoExistente(Evento eventoAEditar) {
-        System.out.println("Ingresa el numero del recurso editar");
-        int numero = teclado.leerNumero();
-        teclado.leerLinea();
+        int numero = teclado.leerNumeroEntero("Ingresa el numero del recurso editar","Ingresa el numero del recurso a editar debe ser entero");
         int tamanioLista = eventoAEditar.cantidadRecursos();
         if (numero <= tamanioLista) {
             Recurso recurso = eventoAEditar.obtenerRecurso(numero - 1);
