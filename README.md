@@ -10,7 +10,7 @@
   <li>Listar eventos pasados y en curso(presentes y futuros).</li>
   <li>Dar Feedbacks del evento </li>
   <li>listar feedbacks </li>
-  <li>Registrarintegrantes para los eventos.</li>
+  <li>Registrar integrantes para los eventos.</li>
   </ln>
 </div>
 <h3>Tecnologías Utilizadas</h3>
