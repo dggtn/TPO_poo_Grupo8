@@ -23,7 +23,9 @@ public class Teclado {
 
     public String leerTexto(String titulo) {
         System.out.println(titulo);
-        return this.scanner.next();
+        String valor = this.scanner.next();
+        this.scanner.nextLine();
+        return valor;
     }
 
     public int leerNumeroEntero(String titulo,String mensajeDeError) {
@@ -43,9 +45,10 @@ public class Teclado {
         return valor;
     }
 
-    public LocalDate leerFecha(String mensajeDeError) {
+    public LocalDate leerFecha(String titulo, String mensajeDeError) {
         LocalDate valor = null;
         boolean seguirPidiendo = true;
+        System.out.println(titulo);
         while (seguirPidiendo) {
             try {
                 String texto = this.scanner.next();

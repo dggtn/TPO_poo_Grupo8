@@ -23,7 +23,7 @@ public class GestorDeEventos {
         this.pantallaCrearEvento = new PantallaCrearEvento(this.teclado);
         this.pantallaEditarUbicacion = new PantallaEditarUbicacion(this.teclado);
         this.pantallaAdministrarIntegrantes = new PantallaAdministrarIntegrantes(this.teclado);
-        this.pantallaAdministrarRecursos = new PantallaAdministrarRecursos(new Scanner(System.in));
+        this.pantallaAdministrarRecursos = new PantallaAdministrarRecursos(this.teclado);
         this.pantallaMostrarFeedback = new PantallaMostrarFeedback(this.teclado);
 
         //para iniciar ya con un ejemplo
@@ -51,7 +51,6 @@ public class GestorDeEventos {
                     """;
             System.out.println(menu);
             opcion = this.teclado.leerTexto("Opcion a elegir: ").charAt(0);
-            this.teclado.leerLinea();
 
             switch (opcion) {
                 case 'a':
@@ -149,8 +148,7 @@ public class GestorDeEventos {
     }
 
     private void editarFecha( Evento eventoAEditar) {
-        System.out.println("Ingresa la nueva fecha");
-        LocalDate fecha = this.teclado.leerFecha("Ingesa en formato dd/MM/yyyy");
+        LocalDate fecha = this.teclado.leerFecha("Ingresa la nueva fecha(dd/MM/yyyy)", "Ingesa en formato dd/MM/yyyy");
         eventoAEditar.setFecha(fecha);
     }
 

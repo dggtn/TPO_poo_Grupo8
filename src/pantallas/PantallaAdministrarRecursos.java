@@ -12,8 +12,8 @@ public class PantallaAdministrarRecursos {
     private final Teclado teclado;
 
 
-    public PantallaAdministrarRecursos(Scanner teclado) {
-        this.teclado = new Teclado();
+    public PantallaAdministrarRecursos(Teclado teclado) {
+        this.teclado = teclado;
     }
 
     public void iniciar(Evento eventoAEditar) {
