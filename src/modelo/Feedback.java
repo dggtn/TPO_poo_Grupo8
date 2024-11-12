@@ -19,5 +19,12 @@ public class Feedback {
         this.autor = autor;
     }
 
+    @Override
+    public String toString() {
+        return "Feedback: " +
+                "mensaje: '" + mensaje + '\'' +
+                ", autor: '" + autor + '\'' +
+                '}';
+    }
 }
 

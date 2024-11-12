@@ -25,7 +25,7 @@ public class GestorDeEventos {
         this.pantallaAdministrarRecursos = new PantallaAdministrarRecursos(new Scanner(System.in));
         this.pantallaMostrarFeedback = new PantallaMostrarFeedback(this.teclado);
 
-        //borrarlo
+        //para iniciar ya con un ejemplo
         Ubicacion ubicacion = new Ubicacion("provincia","ciudad",14060, 87, "calle");
         Evento evento = new Evento("Prueba", "Descripcidn de prueba", 1, LocalDate.now(), ubicacion);
         this.eventos.add(evento);

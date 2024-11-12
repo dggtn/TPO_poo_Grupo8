@@ -36,11 +36,9 @@ public class PantallaEditarUbicacion {
                     editarProvincia(eventoAEditar);
                     break;
                 case 2:
-
                     editarCiudad(eventoAEditar);
                     break;
                 case 3:
-
                     editarCodigo(eventoAEditar);
                     break;
                 case 4:

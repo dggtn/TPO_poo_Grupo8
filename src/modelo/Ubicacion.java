@@ -58,7 +58,7 @@ public class Ubicacion {
 
     @Override
     public String toString() {
-        return "modelo.Ubicacion:" +
+        return "Ubicacion:" +
                 "ciudad: '" + ciudad + '\'' +
                 ", provincia: '" + provincia + '\'' +
                 ", calle: '" + calle + '\'' +
