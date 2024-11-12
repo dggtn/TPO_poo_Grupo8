@@ -2,6 +2,7 @@ package aplicacion;
 
 import modelo.*;
 import pantallas.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +27,8 @@ public class GestorDeEventos {
         this.pantallaMostrarFeedback = new PantallaMostrarFeedback(this.teclado);
 
         //para iniciar ya con un ejemplo
-        Ubicacion ubicacion = new Ubicacion("provincia","ciudad",14060, 87, "calle");
-        Evento evento = new Evento("Prueba", "Descripcidn de prueba", 1, LocalDate.now(), ubicacion);
+        Ubicacion ubicacion = new Ubicacion(87, "calle");
+        Evento evento = new Evento("Prueba", "Descripción de prueba", 1, LocalDate.now(), ubicacion);
         this.eventos.add(evento);
     }
 
@@ -72,7 +73,7 @@ public class GestorDeEventos {
     }
 
     private void editarEvento(Scanner teclado) {
-        int numeracion = this.teclado.leerNumeroEntero("Ingresa el numero de evento que quieres editar:","Debe ser un numero entero");
+        int numeracion = this.teclado.leerNumeroEntero("Ingresa el numero de evento que quieres editar:", "Debe ser un numero entero");
         if (numeracion != 0 && numeracion <= eventos.size()) {
             Evento eventoAEditar = eventos.get(numeracion - 1);
 
@@ -95,26 +96,26 @@ public class GestorDeEventos {
                         0 - Volver al menu anterior
                         """;
                 System.out.println(menu);
-                opcion = this.teclado.leerNumeroEntero("Opción a elegir:  ","La opción debe ser un numero");
+                opcion = this.teclado.leerNumeroEntero("Opción a elegir:  ", "La opción debe ser un numero");
 
                 switch (opcion) {
                     case 1:
 
-                        editarNombre(teclado, eventoAEditar);
+                        editarNombre(eventoAEditar);
                         break;
                     case 2:
 
-                        editarFecha(teclado, eventoAEditar);
+                        editarFecha( eventoAEditar);
                         break;
                     case 3:
 
-                        editarCapacidad(teclado, eventoAEditar);
+                        editarCapacidad(eventoAEditar);
                         break;
                     case 4:
                         this.pantallaEditarUbicacion.editarUbicacion(eventoAEditar);
                         break;
                     case 5:
-                        editarDescripcion(teclado, eventoAEditar);
+                        editarDescripcion(eventoAEditar);
                         break;
                     case 6:
                         this.pantallaAdministrarIntegrantes.iniciar(eventoAEditar);
@@ -135,26 +136,26 @@ public class GestorDeEventos {
         }
     }
 
-    private void editarDescripcion(Scanner teclado, Evento eventoAEditar) {
+    private void editarDescripcion(Evento eventoAEditar) {
         System.out.println("Ingresa la nueva descripción");
         String descripcion = this.teclado.leerLinea();
         eventoAEditar.setDescripcion(descripcion);
     }
 
-    private void editarNombre(Scanner teclado, Evento eventoAEditar) {
+    private void editarNombre( Evento eventoAEditar) {
         System.out.println("Ingresa el nuevo nombre");
         String nombre = this.teclado.leerLinea();
         eventoAEditar.setNombre(nombre);
     }
 
-    private void editarFecha(Scanner teclado, Evento eventoAEditar) {
+    private void editarFecha( Evento eventoAEditar) {
         System.out.println("Ingresa la nueva fecha");
         LocalDate fecha = this.teclado.leerFecha("Ingesa en formato dd/MM/yyyy");
         eventoAEditar.setFecha(fecha);
     }
 
-    private void editarCapacidad(Scanner teclado, Evento eventoAEditar) {
-        int capacidadMaxima = this.teclado.leerNumeroEntero("Ingresa la nueva capacidad maxima","La capacidad maxima debe ser un numero entero");
+    private void editarCapacidad(Evento eventoAEditar) {
+        int capacidadMaxima = this.teclado.leerNumeroEntero("Ingresa la nueva capacidad maxima", "La capacidad maxima debe ser un numero entero");
         eventoAEditar.setCapacidadMaxima(capacidadMaxima);
     }
 

@@ -48,7 +48,6 @@ public class Teclado {
         boolean seguirPidiendo = true;
         while (seguirPidiendo) {
             try {
-                System.out.println("Ingresa fecha del evento (dd/MM/yyyy): ");
                 String texto = this.scanner.next();
                 valor =LocalDate.parse(texto, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 seguirPidiendo = false;
