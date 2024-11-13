@@ -17,6 +17,5 @@
 <p>Java: Lenguaje de programación usado.</p>
 <div>
 <h2>Diagrama de clases:</h2>
-<img>![image](https://github.com/user-attachments/assets/f02d9dfb-a98c-4647-a5cd-431142b38b40)
-<img>
+![Diagrama de clases POO drawio](https://github.com/user-attachments/assets/ccfff0e9-3033-46e1-8979-edc3bf7f114a)
 </div>
