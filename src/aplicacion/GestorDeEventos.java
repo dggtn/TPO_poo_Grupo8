@@ -82,6 +82,7 @@ public class GestorDeEventos {
                 System.out.println("Capacidad maxima: " + eventoAEditar.getCapacidadMaxima());
                 System.out.println("Fecha:  " + eventoAEditar.getFecha());
                 System.out.println(eventoAEditar.obtenerDetalleUbicacion());
+                System.out.println("Descripción del evento: " + eventoAEditar.getDescripcion());
                 System.out.println(); //espacio entre el listado y el menu
                 var menu = """
                         1 - Editar Nombre

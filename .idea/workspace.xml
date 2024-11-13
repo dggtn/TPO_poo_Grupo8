@@ -7,9 +7,7 @@
     <list default="true" id="f3a9c1c9-c4da-41fb-8e65-ea5aeac07047" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/aplicacion/GestorDeEventos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/aplicacion/GestorDeEventos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Teclado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Teclado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaAdministrarRecursos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaAdministrarRecursos.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pantallas/PantallaCrearEvento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pantallas/PantallaCrearEvento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modelo/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Evento.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +25,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "ManuelNuniez"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/dggtn9/TPO_poo_Grupo8.git",
+    "accountId": "e6bd5bd6-5c24-4766-b2fd-251531788368"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>

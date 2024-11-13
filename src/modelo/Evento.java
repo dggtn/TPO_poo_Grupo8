@@ -45,6 +45,10 @@ public class Evento {
         return capacidadMaxima;
     }
 
+    public String getDescripcion(){
+        return this.descripcion;
+    }
+
     public void setCapacidadMaxima(int capacidadMaxima) {
         this.capacidadMaxima = capacidadMaxima;
     }
