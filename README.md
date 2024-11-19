@@ -1,6 +1,3 @@
-<title>Gestor de Eventos - Trabajo Práctico Obligatorio</title>
-</head>
-<body>
 
   <h1>Gestor de Eventos - Trabajo Práctico Obligatorio</h1>
   <p><strong>Materia:</strong> Paradigma Orientado a Objetos<br>
